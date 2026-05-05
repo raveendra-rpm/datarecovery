@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const heroImages = [
-  "/images/hero_banner/hero_banner_one.jpg",
-  "/images/hero_banner/hero_banner_two.jpg",
-  "/images/hero_banner/hero_banner_three.jpg",
-  "/images/hero_banner/hero_banner_four.jpg",
+  "/datarecovery/images/hero_banner/hero_banner_one.jpg",
+  "/datarecovery/images/hero_banner/hero_banner_two.jpg",
+  "/datarecovery/images/hero_banner/hero_banner_three.jpg",
+  "/datarecovery/images/hero_banner/hero_banner_four.jpg",
 ];
 
 export default function Hero() {

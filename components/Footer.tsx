@@ -38,7 +38,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-8">
               <Link href="/">
                 <Image 
-                  src="/images/data_recovery_logo.webp" 
+                  src="/datarecovery/images/data_recovery_logo.webp" 
                   alt="Data Storage Solutions" 
                   width={180} 
                   height={60} 

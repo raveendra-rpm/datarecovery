@@ -142,7 +142,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/data_recovery_logo.webp"
+                src="/datarecovery/images/data_recovery_logo.webp"
                 alt="Data Storage Solutions"
                 width={140}
                 height={40}
