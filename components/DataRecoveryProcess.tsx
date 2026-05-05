@@ -29,28 +29,27 @@ export default function DataRecoveryProcess() {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      
-      if (rect.top > 0) {
-        setScrollProgress(0); 
-      } else if (rect.bottom < windowHeight) {
-        setScrollProgress(1); 
+
+      const scrolledPast = scrollY - sectionTop;
+      const totalScrollable = sectionHeight - windowHeight;
+
+      if (scrolledPast <= 0) {
+        setScrollProgress(0);
+      } else if (totalScrollable <= 0 || scrolledPast >= totalScrollable) {
+        setScrollProgress(1);
       } else {
-        const scrolledPast = -rect.top; 
-        const totalScrollable = rect.height - windowHeight;
-        
-        if (totalScrollable > 0) {
-          const progress = scrolledPast / totalScrollable;
-          // Finish animation at 90% of the sticky section to allow a visual "pause" at Step 07
-          const adjustedProgress = progress / 0.90;
-          setScrollProgress(Math.max(0, Math.min(1, adjustedProgress)));
-        }
+        const progress = scrolledPast / totalScrollable;
+        const adjustedProgress = progress / 0.90;
+        setScrollProgress(Math.max(0, Math.min(1, adjustedProgress)));
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // init
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -151,7 +150,7 @@ export default function DataRecoveryProcess() {
                         <stop offset="100%" stopColor="#00f2fe" />
                       </linearGradient>
                       <clipPath id="revealClip">
-                        <rect x="0" y="-50" height="200" width={`${scrollProgress * 100}%`} />
+                        <rect x="0" y="-50" height="200" width={scrollProgress * 600} />
                       </clipPath>
                     </defs>
 
