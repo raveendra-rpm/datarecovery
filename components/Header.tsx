@@ -2,7 +2,8 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
+import { publicPath } from '@/lib/site';
 
 // ── Dropdown Data with Images ───────────────────────────────────────
 
@@ -64,12 +65,12 @@ function MegaMenuDropdown({
       onMouseLeave={handleLeave}
     >
       <button
-        className={`flex items-center gap-1 text-sm font-semibold transition-all pb-1 border-b-2 border-transparent hover:border-[#004b9b] hover:text-[#004b9b] ${open ? 'border-[#004b9b] text-[#004b9b]' : 'text-gray-700'
+        className={`flex items-center gap-1 2xl:gap-1.5 text-sm 2xl:text-[15px] font-semibold transition-all pb-1 border-b-2 border-transparent hover:border-[#004b9b] hover:text-[#004b9b] ${open ? 'border-[#004b9b] text-[#004b9b]' : 'text-gray-700'
           }`}
       >
         {label}
         <ChevronDown
-          size={13}
+          size={15}
           className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
         />
       </button>
@@ -126,7 +127,7 @@ function NavLink({ label }: { label: string }) {
   return (
     <Link
       href="#"
-      className="text-sm font-semibold text-gray-700 pb-1 border-b-2 border-transparent hover:border-[#004b9b] hover:text-[#004b9b] transition-all"
+      className="text-sm 2xl:text-[15px] font-semibold text-gray-700 pb-1 border-b-2 border-transparent hover:border-[#004b9b] hover:text-[#004b9b] transition-all"
     >
       {label}
     </Link>
@@ -137,25 +138,25 @@ function NavLink({ label }: { label: string }) {
 export default function Header() {
   return (
     <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6">
-        <div className="flex items-center h-[70px] gap-10">
+      <div className="max-w-[1366px] 2xl:max-w-[1760px] mx-auto px-4 sm:px-6 2xl:px-10">
+        <div className="flex items-center justify-between h-[70px] 2xl:h-[88px] gap-8 2xl:gap-16">
 
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/datarecovery/images/data_recovery_logo.webp"
+                src={publicPath('/images/data_recovery_logo.webp')}
                 alt="Data Storage Solutions"
-                width={140}
-                height={40}
-                className="h-8 w-auto object-contain"
+                width={210}
+                height={62}
+                className="h-8 2xl:h-12 w-auto object-contain"
                 priority
               />
             </Link>
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-7 flex-1">
+          <nav className="hidden md:flex items-center justify-end gap-7 2xl:gap-12">
             <NavLink label="Home" />
             <MegaMenuDropdown label="Who We Are" data={whoWeAreData} columns={3} imageLeft />
             <MegaMenuDropdown label="Services" data={servicesData} columns={3} imageLeft />
@@ -164,6 +165,13 @@ export default function Header() {
             <MegaMenuDropdown label="DSS" data={dssData} columns={4} imageLeft />
             <NavLink label="Claims" />
             <NavLink label="Contacts" />
+            <a
+              href="tel:+919880872536"
+              className="inline-flex items-center justify-center gap-2 bg-[#ff1a1a] px-5 2xl:px-7 py-3 2xl:py-3.5 text-xs 2xl:text-[15px] font-extrabold text-white shadow-[0_8px_18px_rgba(255,26,26,0.25)] transition-colors hover:bg-[#d91414] whitespace-nowrap"
+            >
+              <Phone size={16} strokeWidth={2.5} />
+              +91 988087 2536
+            </a>
           </nav>
 
         </div>

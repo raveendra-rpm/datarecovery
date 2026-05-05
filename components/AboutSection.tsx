@@ -22,32 +22,32 @@ const highlights = [
 
 export default function AboutSection() {
   return (
-    <section className="py-20 bg-[#fafafa] w-full relative overflow-hidden">
+    <section className="py-20 2xl:py-28 bg-[#fafafa] w-full relative overflow-hidden">
       {/* Decorative background blob */}
       <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-blue-100 opacity-40 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full bg-blue-100 opacity-30 blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+      <div className="max-w-[1366px] 2xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-16 2xl:px-20 relative z-10">
         {/* Top label */}
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <span className="h-px w-10 bg-[#ff1a1a]" />
-          <span className="text-[#ff1a1a] font-semibold text-sm uppercase tracking-widest">
+        <div className="flex items-center justify-center gap-2 2xl:gap-3 mb-4 2xl:mb-5">
+          <span className="h-px w-10 2xl:w-14 bg-[#ff1a1a]" />
+          <span className="text-[#ff1a1a] font-semibold text-sm 2xl:text-base uppercase tracking-widest">
             #1 Data Recovery Services
           </span>
-          <span className="h-px w-10 bg-[#ff1a1a]" />
+          <span className="h-px w-10 2xl:w-14 bg-[#ff1a1a]" />
         </div>
 
         {/* Main heading */}
-        <h2 className="text-center text-[2rem] md:text-[2.6rem] font-bold text-[#1a1a2e] leading-tight mb-14 max-w-3xl mx-auto">
+        <h2 className="text-center text-[2rem] md:text-[2.6rem] 2xl:text-[3.4rem] font-bold text-[#1a1a2e] leading-tight mb-14 2xl:mb-20 max-w-3xl 2xl:max-w-5xl mx-auto">
           Get the Best{' '}
           <span className="text-[#004b9b]">Data Recovery Services</span>{' '}
           in Bangalore
         </h2>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 2xl:gap-28 items-start">
           {/* Left — paragraphs */}
-          <div className="space-y-5 text-[#4b5563] leading-[1.85] text-[15.5px] text-justify">
+          <div className="space-y-5 2xl:space-y-6 text-[#4b5563] leading-[1.85] 2xl:leading-[1.9] text-[15.5px] 2xl:text-[18px] text-justify">
             <p>
               Data Storage Solutions bring hope to businesses and individuals that lose their
               data either intentionally or because of some mishap, hardware malfunction, or
@@ -74,7 +74,7 @@ export default function AboutSection() {
             <div className="pt-4">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 bg-[#004b9b] text-white px-7 py-3 font-semibold text-sm hover:bg-blue-800 transition-colors rounded-sm group"
+                className="inline-flex items-center gap-2 bg-[#004b9b] text-white px-7 2xl:px-9 py-3 2xl:py-4 font-semibold text-sm 2xl:text-base hover:bg-blue-800 transition-colors rounded-sm group"
               >
                 Learn More About Us
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -83,10 +83,10 @@ export default function AboutSection() {
           </div>
 
           {/* Right — highlight cards (Asymmetric Grid) */}
-          <div className="grid grid-cols-2 gap-4 h-full">
+          <div className="grid grid-cols-2 gap-4 2xl:gap-6 h-full">
 
             {/* Big Card - spans 2 columns */}
-            <div className="col-span-2 sm:col-span-2 rounded-[24px] p-8 relative overflow-hidden flex flex-col justify-between min-h-[240px] transition-transform hover:-translate-y-1 group">
+            <div className="col-span-2 sm:col-span-2 rounded-[24px] p-8 2xl:p-10 relative overflow-hidden flex flex-col justify-between min-h-[240px] 2xl:min-h-[320px] transition-transform hover:-translate-y-1 group">
               {/* Full Background Image */}
               <Image
                 src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
@@ -97,17 +97,17 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/70"></div>
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-lg tracking-tight">
+                <h3 className="text-2xl sm:text-3xl 2xl:text-4xl font-bold text-white leading-tight drop-shadow-lg tracking-tight">
                   All Devices Covered
                 </h3>
               </div>
-              <p className="text-gray-100 text-base sm:text-lg relative z-10 max-w-[80%] mt-8 leading-relaxed font-medium drop-shadow-md">
+              <p className="text-gray-100 text-base sm:text-lg 2xl:text-xl relative z-10 max-w-[80%] mt-8 leading-relaxed font-medium drop-shadow-md">
                 Hard disks, SSDs, USB drives, RAID systems & more.
               </p>
             </div>
 
             {/* Small Card 1 */}
-            <div className="col-span-2 sm:col-span-1 rounded-[24px] p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between min-h-[240px] transition-transform hover:-translate-y-1 group">
+            <div className="col-span-2 sm:col-span-1 rounded-[24px] p-6 sm:p-8 2xl:p-10 relative overflow-hidden flex flex-col justify-between min-h-[240px] 2xl:min-h-[300px] transition-transform hover:-translate-y-1 group">
               {/* Full Background Image */}
               <Image
                 src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80"
@@ -117,16 +117,16 @@ export default function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/70"></div>
               {/* Content */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight relative z-10 drop-shadow-lg tracking-tight">
+              <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-bold text-white leading-tight relative z-10 drop-shadow-lg tracking-tight">
                 Safe & Confidential
               </h3>
-              <p className="text-gray-100 text-sm sm:text-base mt-6 leading-relaxed relative z-10 drop-shadow-md font-medium">
+              <p className="text-gray-100 text-sm sm:text-base 2xl:text-lg mt-6 leading-relaxed relative z-10 drop-shadow-md font-medium">
                 Your data is handled with strict confidentiality.
               </p>
             </div>
 
             {/* Small Card 2 */}
-            <div className="col-span-2 sm:col-span-1 rounded-[24px] p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between min-h-[240px] transition-transform hover:-translate-y-1 group">
+            <div className="col-span-2 sm:col-span-1 rounded-[24px] p-6 sm:p-8 2xl:p-10 relative overflow-hidden flex flex-col justify-between min-h-[240px] 2xl:min-h-[300px] transition-transform hover:-translate-y-1 group">
               {/* Full Background Image */}
               <Image
                 src="https://images.unsplash.com/photo-1508962914676-134849a727f0?w=600&q=80"
@@ -136,10 +136,10 @@ export default function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/70"></div>
               {/* Content */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight relative z-10 drop-shadow-lg tracking-tight">
+              <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-bold text-white leading-tight relative z-10 drop-shadow-lg tracking-tight">
                 Flexible Timing
               </h3>
-              <p className="text-gray-100 text-sm sm:text-base mt-6 leading-relaxed relative z-10 drop-shadow-md font-medium">
+              <p className="text-gray-100 text-sm sm:text-base 2xl:text-lg mt-6 leading-relaxed relative z-10 drop-shadow-md font-medium">
                 We work around your schedule to limit downtime.
               </p>
             </div>

@@ -29,12 +29,20 @@ export default function DataRecoveryProcess() {
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const scrollY = window.scrollY;
+      const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const scrolledPast = scrollY - sectionTop;
+      if (window.innerWidth >= 1536) {
+        const start = windowHeight * 0.72;
+        const end = windowHeight * 0.28;
+        const progress = (start - rect.top) / (start - end);
+        setScrollProgress(Math.max(0, Math.min(1, progress)));
+        return;
+      }
+
+      const sectionTop = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrolledPast = window.scrollY - sectionTop;
       const totalScrollable = sectionHeight - windowHeight;
 
       if (scrolledPast <= 0) {
@@ -55,6 +63,8 @@ export default function DataRecoveryProcess() {
 
   // Auto-scroll logic after Step 07 completion
   useEffect(() => {
+    if (window.innerWidth >= 1536) return;
+
     if (scrollProgress >= 1 && !isAutoScrollingRef.current) {
       const timer = setTimeout(() => {
         if (nextSectionRef.current) {
@@ -75,8 +85,8 @@ export default function DataRecoveryProcess() {
     <section className="w-full bg-[#0a0a1f] relative pt-0 pb-20">
       
       {/* Sticky Scroll Container */}
-      <div ref={sectionRef} className="w-full relative h-[300vh] group" onMouseMove={handleMouseMove}>
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-start pt-14 md:pt-20 xl:pt-16">
+      <div ref={sectionRef} className="w-full relative h-[300vh] 2xl:h-[620px] group" onMouseMove={handleMouseMove}>
+        <div className="sticky top-0 h-screen 2xl:relative 2xl:h-[620px] w-full overflow-hidden flex flex-col justify-start pt-14 md:pt-20 xl:pt-16 2xl:pt-8">
           
           {/* Interactive Mouse Glow */}
           <div 
@@ -109,10 +119,10 @@ export default function DataRecoveryProcess() {
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-700 opacity-10 rounded-full blur-3xl pointer-events-none z-0" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-700 opacity-10 rounded-full blur-3xl pointer-events-none z-0" />
 
-          <div className="w-full max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+          <div className="w-full max-w-[1366px] 2xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
             {/* Header */}
-            <div className="text-center mb-16 xl:mb-20">
+            <div className="text-center mb-16 xl:mb-20 2xl:mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <span className="h-px w-10 bg-[#4facfe]" />
                 <span className="text-[#4facfe] text-xs font-bold tracking-[0.25em] uppercase">
@@ -120,18 +130,18 @@ export default function DataRecoveryProcess() {
                 </span>
                 <span className="h-px w-10 bg-[#4facfe]" />
               </div>
-              <h2 className="text-white text-[2rem] md:text-[2.6rem] font-bold leading-tight">
+              <h2 className="text-white text-[2rem] md:text-[2.6rem] 2xl:text-[3.4rem] font-bold leading-tight">
                 Our <span className="text-[#4facfe]">Data Recovery</span> Process
               </h2>
-              <p className="text-gray-400 text-sm mt-3 max-w-xl mx-auto leading-relaxed">
+              <p className="text-gray-400 text-sm 2xl:text-base mt-3 2xl:mt-4 max-w-xl 2xl:max-w-3xl mx-auto leading-relaxed">
                 A transparent, step-by-step approach to getting your critical data back safely and efficiently.
               </p>
             </div>
 
             {/* Desktop Horizontal Timeline */}
             <div className="hidden xl:block w-full">
-              <div className="max-w-[1100px] mx-auto">
-                <div className="relative h-[280px] ml-[60px] mr-[250px]">
+              <div className="max-w-[1100px] 2xl:max-w-[1520px] mx-auto">
+                <div className="relative h-[280px] 2xl:h-[270px] ml-[60px] mr-[250px] 2xl:ml-[70px] 2xl:mr-[220px]">
                   
                   {/* SVG Connecting Line */}
                   <svg 
@@ -183,21 +193,21 @@ export default function DataRecoveryProcess() {
                     return (
                       <div 
                         key={index} 
-                        className={`absolute flex items-center -translate-x-[28px] -translate-y-1/2 group transition-all duration-500 ease-out hover:scale-105 hover:opacity-100 hover:grayscale-0 ${isReached ? 'opacity-100 scale-100 grayscale-0' : 'opacity-40 scale-95 grayscale-[60%]'}`}
+                        className={`absolute flex items-center -translate-x-[28px] 2xl:-translate-x-[34px] -translate-y-1/2 group transition-all duration-500 ease-out hover:scale-105 hover:opacity-100 hover:grayscale-0 ${isReached ? 'opacity-100 scale-100 grayscale-0' : 'opacity-40 scale-95 grayscale-[60%]'}`}
                         style={{ 
                           left: `${leftPercent}%`, 
                           top: step.position === 'top' ? '20%' : '80%',
                           zIndex: 20
                         }}
                       >
-                        <div className={`relative z-10 flex items-center bg-gradient-to-r from-[#11235a]/90 to-[#1b439c]/90 backdrop-blur-sm rounded-full p-1.5 pr-6 shadow-[0_0_20px_rgba(27,67,156,0.5)] border transition-colors duration-500 group-hover:border-[#4facfe]/40 ${isReached ? 'border-[#4facfe]/40' : 'border-transparent'}`}>
-                          <div className={`flex flex-col items-center justify-center w-14 h-14 rounded-full text-white shrink-0 z-20 transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#00f2fe] group-hover:to-[#4facfe] group-hover:shadow-[0_0_20px_rgba(0,242,254,0.6)] ${isReached ? 'bg-gradient-to-tr from-[#00f2fe] to-[#4facfe] shadow-[0_0_20px_rgba(0,242,254,0.6)]' : 'bg-[#1b439c]'}`}>
-                            <span className="text-[8px] uppercase tracking-wider font-bold opacity-90 leading-none mb-0.5">Step</span>
-                            <span className="text-[17px] font-extrabold leading-none">{step.num}</span>
+                        <div className={`relative z-10 flex items-center bg-gradient-to-r from-[#11235a]/90 to-[#1b439c]/90 backdrop-blur-sm rounded-full p-1.5 2xl:p-2 pr-6 2xl:pr-8 shadow-[0_0_20px_rgba(27,67,156,0.5)] border transition-colors duration-500 group-hover:border-[#4facfe]/40 ${isReached ? 'border-[#4facfe]/40' : 'border-transparent'}`}>
+                          <div className={`flex flex-col items-center justify-center w-14 h-14 2xl:w-16 2xl:h-16 rounded-full text-white shrink-0 z-20 transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#00f2fe] group-hover:to-[#4facfe] group-hover:shadow-[0_0_20px_rgba(0,242,254,0.6)] ${isReached ? 'bg-gradient-to-tr from-[#00f2fe] to-[#4facfe] shadow-[0_0_20px_rgba(0,242,254,0.6)]' : 'bg-[#1b439c]'}`}>
+                            <span className="text-[8px] 2xl:text-[9px] uppercase tracking-wider font-bold opacity-90 leading-none mb-0.5">Step</span>
+                            <span className="text-[17px] 2xl:text-[20px] font-extrabold leading-none">{step.num}</span>
                           </div>
-                          <div className="flex items-center gap-2.5 ml-4">
-                            <span className="text-white text-sm font-semibold whitespace-nowrap">{step.label}</span>
-                            <step.icon size={18} className={`transition-colors duration-500 group-hover:text-[#00f2fe] ${isReached ? 'text-[#00f2fe]' : 'text-gray-400'}`} />
+                          <div className="flex items-center gap-2.5 2xl:gap-3 ml-4 2xl:ml-5">
+                            <span className="text-white text-sm 2xl:text-base font-semibold whitespace-nowrap">{step.label}</span>
+                            <step.icon size={20} className={`transition-colors duration-500 group-hover:text-[#00f2fe] ${isReached ? 'text-[#00f2fe]' : 'text-gray-400'}`} />
                           </div>
                         </div>
                       </div>

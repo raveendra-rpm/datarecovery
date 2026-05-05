@@ -1,16 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
+import { publicPath } from '@/lib/site';
 
 const logos = [
-  { name: 'Agilent Technologies', src: '/datarecovery/images/partner_companies/agilent_technologies_logo.png' },
-  { name: 'Airtel', src: '/datarecovery/images/partner_companies/airtel-logo.png' },
-  { name: 'Bharat Petroleum', src: '/datarecovery/images/partner_companies/bharat-petroleum_logo.png' },
-  { name: 'Blue Star', src: '/datarecovery/images/partner_companies/blue-star-logo.png' },
-  { name: 'BSNL', src: '/datarecovery/images/partner_companies/bsnl_logo.png' },
-  { name: 'Columbia Asia', src: '/datarecovery/images/partner_companies/columbia_asia_logo.png' },
-  { name: 'ITC Limited', src: '/datarecovery/images/partner_companies/itc_limited_logo.png' },
-  { name: 'Kennametal', src: '/datarecovery/images/partner_companies/kennametal_logo.png' },
-  { name: 'SKF', src: '/datarecovery/images/partner_companies/skf_logo.webp' },
+  { name: 'Agilent Technologies', src: publicPath('/images/partner_companies/agilent_technologies_logo.png') },
+  { name: 'Airtel', src: publicPath('/images/partner_companies/airtel-logo.png') },
+  { name: 'Bharat Petroleum', src: publicPath('/images/partner_companies/bharat-petroleum_logo.png') },
+  { name: 'Blue Star', src: publicPath('/images/partner_companies/blue-star-logo.png') },
+  { name: 'BSNL', src: publicPath('/images/partner_companies/bsnl_logo.png') },
+  { name: 'Columbia Asia', src: publicPath('/images/partner_companies/columbia_asia_logo.png') },
+  { name: 'ITC Limited', src: publicPath('/images/partner_companies/itc_limited_logo.png') },
+  { name: 'Kennametal', src: publicPath('/images/partner_companies/kennametal_logo.png') },
+  { name: 'SKF', src: publicPath('/images/partner_companies/skf_logo.webp') },
 ];
 
 export default function LogoMarquee() {

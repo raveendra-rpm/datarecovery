@@ -4,6 +4,7 @@ import React, { useState, MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, ArrowRight, Clock, Phone, Mail } from 'lucide-react';
+import { publicPath } from '@/lib/site';
 
 export default function Footer() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -38,7 +39,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-8">
               <Link href="/">
                 <Image 
-                  src="/datarecovery/images/data_recovery_logo.webp" 
+                  src={publicPath('/images/data_recovery_logo.webp')} 
                   alt="Data Storage Solutions" 
                   width={180} 
                   height={60} 
