@@ -129,11 +129,11 @@ export default function WhyChooseUs() {
         {/* Grid */}
         <div className="relative">
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => {
+          {reasons.map((reason) => {
             const Icon = reason.icon;
             return (
-              <div 
-                key={index} 
+              <div
+                key={reason.title}
                 className="group relative bg-white rounded-3xl p-8 border border-slate-100 hover:border-[#004b9b]/25 transition-all duration-500 hover:-translate-y-2 shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:shadow-[0_26px_65px_rgba(0,75,155,0.14)] overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#4facfe]/0 rounded-full blur-3xl pointer-events-none transition-colors duration-500 group-hover:bg-[#4facfe]/20" />

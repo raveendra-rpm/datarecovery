@@ -6,17 +6,21 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   display: "swap",
+  preload: true,
+  weight: ["400", "600", "700", "800", "900"],
 });
 
 const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans",
   display: "swap",
+  preload: true,
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Modern Next.js Dashboard",
-  description: "A modern Next.js app with DnD, SWR, and Tailwind",
+  title: "Best Data Recovery Services in Bangalore | Data Storage Solutions",
+  description: "Expert data recovery services in Bangalore. Recover data from hard disk, SSD, RAID, laptop and more. 20+ years experience. Call +91 9880872536.",
 };
 
 export default function RootLayout({

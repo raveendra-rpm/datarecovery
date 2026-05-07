@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties, MouseEvent, useRef } from 'react';
+import React, { CSSProperties, MouseEvent, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, Clock, Phone, Mail } from 'lucide-react';
@@ -8,12 +8,19 @@ import { publicPath } from '@/lib/site';
 
 export default function Footer() {
   const glowRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (rafRef.current !== null) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    glowRef.current?.style.setProperty('--glow-x', `${e.clientX - rect.left}px`);
-    glowRef.current?.style.setProperty('--glow-y', `${e.clientY - rect.top}px`);
-  };
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    rafRef.current = requestAnimationFrame(() => {
+      glowRef.current?.style.setProperty('--glow-x', `${x}px`);
+      glowRef.current?.style.setProperty('--glow-y', `${y}px`);
+      rafRef.current = null;
+    });
+  }, []);
 
   return (
     <footer 

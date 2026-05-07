@@ -59,7 +59,7 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(129,140,248,0.3),transparent_46%),linear-gradient(180deg,rgba(248,250,252,0.88),rgba(255,255,255,0.98))]" />
                 <div className="relative mb-8 min-h-[140px] 2xl:min-h-[190px] overflow-hidden rounded-2xl bg-white/50">
                   <Image
-                    src={publicPath('/images/all_device_cover_recovery.jpg')}
+                    src={publicPath('/images/all_device_cover_recovery.webp')}
                     alt="All devices covered"
                     fill
                     sizes="(min-width: 1024px) 30vw, 100vw"
@@ -80,7 +80,7 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.3),transparent_48%),linear-gradient(180deg,rgba(248,250,252,0.88),rgba(255,255,255,0.98))]" />
                 <div className="relative mb-8 min-h-[140px] 2xl:min-h-[190px] overflow-hidden rounded-2xl bg-white/50">
                   <Image
-                    src={publicPath('/images/flexible_timing_recovery.jpg')}
+                    src={publicPath('/images/flexible_timing_recovery.webp')}
                     alt="Flexible timing"
                     fill
                     sizes="(min-width: 1024px) 30vw, 100vw"
@@ -101,7 +101,7 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,58,237,0.26),transparent_48%),linear-gradient(180deg,rgba(248,250,252,0.88),rgba(255,255,255,0.98))]" />
                 <div className="relative mb-8 min-h-[140px] 2xl:min-h-[190px] overflow-hidden rounded-2xl bg-white/50">
                   <Image
-                    src={publicPath('/images/safe_confidential_recovery.jpg')}
+                    src={publicPath('/images/safe_confidential_recovery.webp')}
                     alt="Safe and confidential"
                     fill
                     sizes="(min-width: 1024px) 30vw, 100vw"

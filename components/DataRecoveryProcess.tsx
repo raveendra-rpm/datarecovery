@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties, useRef, MouseEvent } from 'react';
+import React, { CSSProperties, useRef, useCallback, MouseEvent } from 'react';
 import { ArrowRight, Car, ZoomIn, FileText, Database, MonitorCheck, CircleDollarSign, Package } from 'lucide-react';
 import ServicesGrid from './ServicesGrid';
 
@@ -16,13 +16,19 @@ const steps = [
 
 export default function DataRecoveryProcess() {
   const glowRef = useRef<HTMLDivElement>(null);
-  const nextSectionRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (rafRef.current !== null) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    glowRef.current?.style.setProperty('--glow-x', `${e.clientX - rect.left}px`);
-    glowRef.current?.style.setProperty('--glow-y', `${e.clientY - rect.top}px`);
-  };
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    rafRef.current = requestAnimationFrame(() => {
+      glowRef.current?.style.setProperty('--glow-x', `${x}px`);
+      glowRef.current?.style.setProperty('--glow-y', `${y}px`);
+      rafRef.current = null;
+    });
+  }, []);
 
   return (
     <section className="w-full bg-[#0a0a1f] relative pt-0 pb-0 overflow-hidden group" onMouseMove={handleMouseMove}>
@@ -126,7 +132,7 @@ export default function DataRecoveryProcess() {
                     
                     return (
                       <div 
-                        key={index} 
+                        key={step.num}
                         className="absolute flex items-center -translate-x-[28px] 2xl:-translate-x-[34px] -translate-y-1/2 group transition-all duration-500 ease-out hover:scale-105 hover:opacity-100 hover:grayscale-0 opacity-100 scale-100 grayscale-0"
                         style={{ 
                           left: `${leftPercent}%`, 
@@ -163,7 +169,7 @@ export default function DataRecoveryProcess() {
               <div className="flex flex-col gap-6 sm:gap-8 relative z-10">
                 {steps.map((step, index) => {
                   return (
-                    <div key={index} className="flex items-center gap-4 w-full group transition-all duration-500 ease-out hover:scale-105 hover:opacity-100 hover:grayscale-0 opacity-100 scale-100 grayscale-0">
+                    <div key={step.num} className="flex items-center gap-4 w-full group transition-all duration-500 ease-out hover:scale-105 hover:opacity-100 hover:grayscale-0 opacity-100 scale-100 grayscale-0">
                       <div className="flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full text-white shrink-0 z-20 transition-all duration-500 group-hover:bg-gradient-to-tr group-hover:from-[#00f2fe] group-hover:to-[#4facfe] group-hover:shadow-[0_0_20px_rgba(0,242,254,0.6)] bg-gradient-to-tr from-[#00f2fe] to-[#4facfe] shadow-[0_0_20px_rgba(0,242,254,0.6)]">
                         <span className="text-[8px] sm:text-[9px] uppercase tracking-wider font-bold opacity-90 leading-none mb-0.5">Step</span>
                         <span className="text-lg sm:text-xl font-extrabold leading-none">{step.num}</span>
@@ -194,7 +200,7 @@ export default function DataRecoveryProcess() {
       </div>
 
       {/* Embedded Services Grid */}
-      <div ref={nextSectionRef} className="relative z-20">
+      <div className="relative z-20">
         <ServicesGrid />
       </div>
 
