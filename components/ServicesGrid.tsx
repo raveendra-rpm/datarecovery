@@ -154,9 +154,9 @@ const ServicesGrid = memo(function ServicesGrid() {
                 {/* Bottom row — Price pill + CTA button */}
                 <div className="flex items-center justify-between mt-5 gap-3">
                   {/* Price Pill — like "$156" */}
-                  <div className="flex items-center gap-1.5 text-[#334155] text-xs font-extrabold whitespace-nowrap">
-                    <span className="w-7 h-7 rounded-full bg-[#f1f5f9] flex items-center justify-center">
-                      <service.icon size={13} className="text-[#004b9b]" />
+                  <div className="flex items-center gap-1.5 text-[#4facfe] text-xs font-extrabold whitespace-nowrap">
+                    <span className="w-7 h-7 rounded-full bg-[#eaf6ff] flex items-center justify-center">
+                      <service.icon size={13} className="text-[#4facfe]" />
                     </span>
                     {service.tag}
                   </div>

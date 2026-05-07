@@ -76,12 +76,13 @@ export default function WhyChooseUs() {
         >
           <defs>
             <linearGradient id="expert-bottom-line" x1="590" y1="62" x2="590" y2="280" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#64748b" stopOpacity="0.34" />
-              <stop offset="1" stopColor="#64748b" stopOpacity="0" />
+              <stop stopColor="#4facfe" stopOpacity="0.56" />
+              <stop offset="0.48" stopColor="#1d7cff" stopOpacity="0.24" />
+              <stop offset="1" stopColor="#4facfe" stopOpacity="0" />
             </linearGradient>
             <radialGradient id="expert-bottom-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(590 70) rotate(90) scale(170 420)">
-              <stop stopColor="#dbeafe" stopOpacity="0.9" />
-              <stop offset="0.46" stopColor="#eef6ff" stopOpacity="0.52" />
+              <stop stopColor="#bfdbfe" stopOpacity="0.95" />
+              <stop offset="0.46" stopColor="#dff1ff" stopOpacity="0.68" />
               <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
             </radialGradient>
           </defs>
@@ -93,7 +94,7 @@ export default function WhyChooseUs() {
               key={endX}
               d={`M 590 70 C ${590 + endX * 0.18} ${endX < 0 ? 112 : 28}, ${590 + endX * 0.62} 118, ${590 + endX} 280`}
               stroke="url(#expert-bottom-line)"
-              strokeWidth="1"
+              strokeWidth="1.15"
             />
           ))}
 
@@ -102,11 +103,11 @@ export default function WhyChooseUs() {
               key={loopX}
               d={`M 590 70 C ${590 + loopX} -18, ${590 + loopX * 1.28} 92, 590 70`}
               stroke="url(#expert-bottom-line)"
-              strokeWidth="0.9"
+              strokeWidth="1"
             />
           ))}
 
-          <path d="M 590 70 C 570 16, 570 16, 590 70 C 610 16, 610 16, 590 70" stroke="url(#expert-bottom-line)" strokeWidth="0.9" />
+          <path d="M 590 70 C 570 16, 570 16, 590 70 C 610 16, 610 16, 590 70" stroke="url(#expert-bottom-line)" strokeWidth="1" />
         </svg>
       </div>
       

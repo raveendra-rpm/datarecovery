@@ -148,7 +148,16 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="w-full bg-[#000000] border-t border-white/5 py-5">
         <div className="max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 text-center text-gray-400 text-[15px]">
-          Data Recovery - Copyright &copy; {new Date().getFullYear()}
+          Copyright &copy; 2024 Data Storage Solutions by{' '}
+          <a
+            href="https://sarthaktech.co.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-[#FF1A1A] transition-colors"
+          >
+            Sarthak Tech
+          </a>
+          . All Rights Reserved.
         </div>
       </div>
     </footer>
