@@ -1,26 +1,29 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { publicPath } from '@/lib/site';
 
 const heroImages = [
-  publicPath("/images/hero_banner/hero_banner_one.jpg"),
-  publicPath("/images/hero_banner/hero_banner_two.jpg"),
-  publicPath("/images/hero_banner/hero_banner_three.jpg"),
-  publicPath("/images/hero_banner/hero_banner_four.jpg"),
+  publicPath("/images/hero_banner/hero_banner_one.webp"),
+  publicPath("/images/hero_banner/hero_banner_two.webp"),
+  publicPath("/images/hero_banner/hero_banner_three.webp"),
+  publicPath("/images/hero_banner/hero_banner_four.webp"),
 ];
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Keep interval ref so it doesn't restart on every render
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Auto-play the slider
   useEffect(() => {
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // Change image every 5 seconds
-    return () => clearInterval(interval);
+    }, 5000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const handlePrev = () => {
@@ -111,9 +114,9 @@ export default function Hero() {
             <button onClick={handlePrev} className="text-[#004b9b] hover:text-[#38bdf8] transition-colors">
               <ChevronLeft size={20} />
             </button>
-            {heroImages.map((_, index) => (
+            {heroImages.map((src, index) => (
               <div
-                key={index}
+                key={src}
                 onClick={() => setCurrentImageIndex(index)}
                 className={`w-2.5 h-2.5 2xl:w-3 2xl:h-3 rounded-full bg-[#004b9b] cursor-pointer transition-opacity ${currentImageIndex === index ? 'opacity-100' : 'opacity-35'
                   }`}
@@ -130,7 +133,7 @@ export default function Hero() {
           <div className="relative w-full max-w-lg 2xl:max-w-[880px] aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-black/10">
             {heroImages.map((src, index) => (
               <Image
-                key={index}
+                key={src}
                 src={src}
                 alt={`Hero Image ${index + 1}`}
                 fill
@@ -138,7 +141,7 @@ export default function Hero() {
                 className={`object-cover transition-opacity duration-700 ease-in-out ${index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
                 priority={index === 0}
-                loading={index === 0 ? 'eager' : 'lazy'}
+                loading="eager"
               />
             ))}
           </div>

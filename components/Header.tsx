@@ -94,10 +94,10 @@ function MegaMenuDropdown({
 
           {/* Card Grid */}
           <div className={`grid ${columns === 4 ? 'grid-cols-4' : 'grid-cols-3'} gap-5 px-8 py-6`}>
-            {data.map((item, i) => (
+            {data.map((item) => (
               <Link
                 href="#"
-                key={i}
+                key={item.title}
                 className={`group border border-gray-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition-all ${imageLeft ? 'flex flex-row' : ''}`}
               >
                 <div className={`${imageLeft ? 'w-28 shrink-0' : 'w-full h-32'} overflow-hidden bg-gray-100 relative`}>
@@ -105,6 +105,7 @@ function MegaMenuDropdown({
                     src={item.img}
                     alt={item.title}
                     fill
+                    loading="lazy"
                     sizes={imageLeft ? '112px' : '(min-width: 768px) 33vw, 100vw'}
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />

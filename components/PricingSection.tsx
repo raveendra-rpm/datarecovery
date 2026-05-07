@@ -1,6 +1,6 @@
 "use client";
 
-import React, { CSSProperties, MouseEvent, useRef } from 'react';
+import React, { CSSProperties, MouseEvent, useRef, useCallback } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
 const plans = [
@@ -88,12 +88,19 @@ const plans = [
 
 export default function PricingSection() {
   const glowRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (rafRef.current !== null) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    glowRef.current?.style.setProperty('--glow-x', `${e.clientX - rect.left}px`);
-    glowRef.current?.style.setProperty('--glow-y', `${e.clientY - rect.top}px`);
-  };
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    rafRef.current = requestAnimationFrame(() => {
+      glowRef.current?.style.setProperty('--glow-x', `${x}px`);
+      glowRef.current?.style.setProperty('--glow-y', `${y}px`);
+      rafRef.current = null;
+    });
+  }, []);
 
   return (
     <section 
@@ -129,9 +136,9 @@ export default function PricingSection() {
 
         {/* Pricing Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {plans.map((plan, index) => (
-            <div 
-              key={index} 
+          {plans.map((plan) => (
+            <div
+              key={plan.category}
               className={`${plan.theme.cardBg} rounded-[32px] p-8 flex flex-col shadow-xl transition-transform duration-300 hover:-translate-y-1 relative`}
             >
               
@@ -158,8 +165,8 @@ export default function PricingSection() {
               {/* Features Block (Colored Soft Box) */}
               <div className={`${plan.theme.featureBg} rounded-[20px] p-6 mb-8`}>
                 <ul className="flex flex-col gap-4">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
                       <CheckCircle2 size={18} className="text-[#34c759] mt-0.5 flex-shrink-0" strokeWidth={2.5} />
                       <span className="text-[#1d1d1f] text-[14px] font-medium leading-tight">
                         {feature}

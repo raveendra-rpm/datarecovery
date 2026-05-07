@@ -98,7 +98,7 @@ export default function FAQSection() {
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={index} className="flex flex-col rounded-2xl border border-slate-100 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden">
+              <div key={faq.question} className="flex flex-col rounded-2xl border border-slate-100 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] overflow-hidden">
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-4 px-5 2xl:px-7 2xl:py-5 text-left bg-white hover:bg-white transition-colors duration-200"

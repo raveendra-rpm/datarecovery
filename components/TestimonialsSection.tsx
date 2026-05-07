@@ -95,9 +95,9 @@ export default function TestimonialsSection() {
             className="flex gap-8 transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(calc(-${current} * (100% / ${CARDS_PER_VIEW} + (32px / ${CARDS_PER_VIEW}))))` }}
           >
-            {testimonials.map((t, index) => (
+            {testimonials.map((t) => (
               <div
-                key={index}
+                key={t.name}
                 className={`flex-none w-[calc((100%-64px)/3)] rounded-[40px] p-10 flex flex-col transition-all duration-500 hover:-translate-y-2 ${
                   t.featured
                     ? 'bg-gradient-to-br from-[#004B9B] to-[#003d82] text-white'
@@ -108,7 +108,7 @@ export default function TestimonialsSection() {
                 <div className="flex gap-1 mb-8">
                   {[...Array(t.stars)].map((_, i) => (
                     <Star
-                      key={i}
+                      key={`${t.name}-star-${i}`}
                       size={16}
                       className={t.featured ? "fill-white text-white" : "fill-[#004B9B] text-[#004B9B]"}
                     />
@@ -133,6 +133,7 @@ export default function TestimonialsSection() {
                     width={56}
                     height={56}
                     sizes="56px"
+                    loading="lazy"
                     className="w-14 h-14 rounded-full object-cover border-2 border-white/30"
                   />
                   <div>
@@ -151,9 +152,9 @@ export default function TestimonialsSection() {
         <div className="flex items-center justify-between mt-12 mb-16">
           {/* Dot Indicators */}
           <div className="flex gap-3">
-            {testimonials.slice(0, maxIndex + 1).map((_, i) => (
+            {testimonials.slice(0, maxIndex + 1).map((t, i) => (
               <button
-                key={i}
+                key={t.name}
                 onClick={() => setCurrent(i)}
                 className={`transition-all duration-300 rounded-full ${
                   i === current

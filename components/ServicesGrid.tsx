@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Cpu, HardDrive, Server, ShieldCheck, FileSearch, Laptop, Archive, ShieldAlert, CheckCircle2, ArrowRight } from 'lucide-react';
@@ -80,7 +80,8 @@ const services = [
   },
 ];
 
-export default function ServicesGrid() {
+// memo: component has no props and pure static data — skip re-render if parent re-renders
+const ServicesGrid = memo(function ServicesGrid() {
   return (
     <div className="pt-24 pb-24 text-white relative z-10 overflow-hidden">
       <div className="max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
@@ -104,9 +105,9 @@ export default function ServicesGrid() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
-          {services.map((service, i) => (
+          {services.map((service) => (
             <div
-              key={i}
+              key={service.title}
               className="group relative bg-white rounded-[28px] overflow-hidden border border-white/80 p-2.5 transition-all duration-500 hover:-translate-y-2 flex flex-col"
               style={{ boxShadow: '0 18px 42px rgba(2, 8, 23, 0.22), inset 0 1px 0 rgba(255,255,255,0.9)' }}
             >
@@ -117,6 +118,7 @@ export default function ServicesGrid() {
                   alt={service.title}
                   fill
                   sizes="(min-width: 1536px) 25vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  loading="lazy"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/30 to-transparent" />
@@ -177,4 +179,6 @@ export default function ServicesGrid() {
       </div>
     </div>
   );
-}
+});
+
+export default ServicesGrid;
