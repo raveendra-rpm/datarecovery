@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
+import { publicPath } from '@/lib/site';
 
 export default function Class100CleanRoomPage() {
   return (
@@ -60,7 +61,7 @@ export default function Class100CleanRoomPage() {
           <div className="md:w-64 lg:w-72 shrink-0">
             <div className="relative w-full h-56 md:h-full min-h-[220px] rounded-xl overflow-hidden border border-slate-100 shadow-md">
               <Image
-                src="/images/headers_img/data_recovery_clean_room.jpg"
+                src={publicPath("/images/headers_img/data_recovery_clean_room.jpg")}
                 alt="Data Recovery in Clean Room Lab"
                 fill
                 className="object-cover"

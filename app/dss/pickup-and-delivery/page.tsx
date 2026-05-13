@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
+import { publicPath } from '@/lib/site';
 import { CheckCircle, Truck, MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const services = [
@@ -249,7 +250,7 @@ export default function PickupAndDelivery() {
             <div className="space-y-5">
               <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-md">
                 <Image
-                  src="/images/headers_img/pickup_delivery.jpg"
+                  src={publicPath("/images/headers_img/pickup_delivery.jpg")}
                   alt="Pickup and Delivery Executive"
                   fill
                   className="object-cover"

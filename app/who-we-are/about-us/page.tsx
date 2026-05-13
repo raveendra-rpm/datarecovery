@@ -316,7 +316,7 @@ export default function AboutUs() {
 
           <div className="relative h-[400px] flex justify-center items-center">
             <div className="relative w-[80%] h-full rounded-2xl overflow-hidden shadow-lg">
-              <Image src="/images/who_we_are/data_recovery_trends.jpg" fill className="object-cover" alt="Recovery Trends Illustration" />
+              <Image src={publicPath("/images/who_we_are/data_recovery_trends.jpg")} fill className="object-cover" alt="Recovery Trends Illustration" />
             </div>
           </div>
         </div>

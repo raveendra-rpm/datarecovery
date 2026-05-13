@@ -106,7 +106,7 @@ function MegaMenuDropdown({
               >
                 <div className={`${imageLeft ? 'w-28 h-full shrink-0' : 'w-full h-32'} overflow-hidden bg-gray-100 relative`}>
                   <Image
-                    src={item.img}
+                    src={publicPath(item.img)}
                     alt={item.title}
                     fill
                     loading="lazy"

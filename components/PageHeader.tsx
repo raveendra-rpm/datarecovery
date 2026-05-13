@@ -3,6 +3,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { publicPath } from '@/lib/site';
 
 interface PageHeaderProps {
   title: string;
@@ -16,7 +17,7 @@ export default function PageHeader({ title, breadcrumb = [], backgroundImage }: 
       {/* Background overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${backgroundImage}')` }}
+        style={{ backgroundImage: `url('${publicPath(backgroundImage)}')` }}
       ></div>
       <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center">
         <h1 className="text-4xl md:text-5xl font-bold font-montserrat">{title}</h1>

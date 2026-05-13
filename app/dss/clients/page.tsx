@@ -41,7 +41,7 @@ function ClientCard({ name, img }: { name: string; img: string | null }) {
       {img ? (
         <div className="relative w-full h-full">
           <Image
-            src={img}
+            src={publicPath(img)}
             alt={name}
             fill
             className="object-contain p-1"

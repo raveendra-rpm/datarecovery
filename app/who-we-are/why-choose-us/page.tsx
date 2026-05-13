@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import Counter from '@/components/Counter';
+import { publicPath } from '@/lib/site';
 import { Award, Settings, HardDrive, Database, Lock, Server, FileText, Cpu, Video, Users, CheckCircle, ShieldCheck, Calendar } from 'lucide-react';
 
 export default function WhyChooseUs() {
@@ -27,7 +28,7 @@ export default function WhyChooseUs() {
             <div className="absolute -bottom-6 -left-6 w-full h-full rounded-3xl bg-gradient-to-br from-[#3da3ff]/30 to-blue-600/10 z-0"></div>
             <div className="relative h-[580px] rounded-3xl overflow-hidden shadow-2xl z-10">
               <Image
-                src="/images/who_we_are/why_choose_dss.jpg"
+                src={publicPath("/images/who_we_are/why_choose_dss.jpg")}
                 fill
                 className="object-cover"
                 alt="Why Choose DSS"
