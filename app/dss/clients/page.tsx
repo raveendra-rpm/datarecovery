@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
+import { publicPath } from '@/lib/site';
 
 // Clients with local images
 const clientsWithImg = [

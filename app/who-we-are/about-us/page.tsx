@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2, ChevronRight, Star } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
+import { publicPath } from '@/lib/site';
 
 export default function AboutUs() {
   return (
