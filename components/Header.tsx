@@ -134,6 +134,7 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
                 href={item.href || '#'}
                 key={item.title}
                 onClick={() => setIsOpen(false)}
+                prefetch={true}
                 tabIndex={isOpen ? undefined : -1}
                 className={`group/card border border-gray-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition-[border-color,box-shadow] duration-200 ${imageLeft ? 'flex flex-row' : ''}`}
               >

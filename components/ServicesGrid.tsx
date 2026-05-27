@@ -128,6 +128,7 @@ const ServicesGrid = memo(function ServicesGrid() {
                   fill
                   sizes="(min-width: 1536px) 25vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   loading="lazy"
+                  decoding="async"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/30 to-transparent" />
