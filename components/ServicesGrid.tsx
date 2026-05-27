@@ -4,6 +4,7 @@ import React, { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Cpu, HardDrive, Server, ShieldCheck, FileSearch, Laptop, Archive, ShieldAlert, CheckCircle2, ArrowRight } from 'lucide-react';
+import { publicPath } from '@/lib/site';
 
 const services = [
   {
@@ -123,7 +124,7 @@ const ServicesGrid = memo(function ServicesGrid() {
               {/* Image Area */}
               <div className="relative h-52 w-full overflow-hidden rounded-[22px] shrink-0 bg-[#eef3f6]">
                 <Image
-                  src={service.img}
+                  src={publicPath(service.img)}
                   alt={service.title}
                   fill
                   sizes="(min-width: 1536px) 25vw, (min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
