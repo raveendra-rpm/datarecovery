@@ -1,12 +1,8 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 
 export default function ClaimsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
-
       <PageHeader
         title="Claims"
         backgroundImage="/images/claims_banner.jpg"
@@ -179,7 +175,6 @@ export default function ClaimsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

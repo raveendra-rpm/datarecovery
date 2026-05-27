@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Star, Quote, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -63,12 +63,32 @@ const testimonials = [
   }
 ];
 
-const CARDS_PER_VIEW = 3;
-
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(3);
 
-  const maxIndex = testimonials.length - CARDS_PER_VIEW;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(3);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, testimonials.length - cardsPerView);
+
+  useEffect(() => {
+    if (current > maxIndex) {
+      setCurrent(maxIndex);
+    }
+  }, [maxIndex, current]);
 
   const prev = () => setCurrent((c) => Math.max(c - 1, 0));
   const next = () => setCurrent((c) => Math.min(c + 1, maxIndex));
@@ -84,7 +104,7 @@ export default function TestimonialsSection() {
             {'// OUR CLIENTS'}
             <span className="h-px w-8 2xl:w-12 bg-[#e11f27]" />
           </p>
-          <h2 className="text-5xl md:text-6xl lg:text-[64px] font-black text-[#1d1d1f] mb-10 leading-tight tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-[64px] font-black text-[#1d1d1f] mb-8 md:mb-10 leading-tight tracking-tight">
             We are Trusted DSS Clients
           </h2>
         </div>
@@ -93,12 +113,12 @@ export default function TestimonialsSection() {
         <div className="overflow-hidden pt-3 -mt-3">
           <div
             className="flex gap-8 transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(calc(-${current} * (100% / ${CARDS_PER_VIEW} + (32px / ${CARDS_PER_VIEW}))))` }}
+            style={{ transform: `translateX(calc(-${current} * (100% / ${cardsPerView} + (32px / ${cardsPerView}))))` }}
           >
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className={`flex-none w-[calc((100%-64px)/3)] rounded-[40px] p-10 flex flex-col transition-all duration-500 hover:-translate-y-2 ${
+                className={`flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] rounded-[40px] p-8 lg:p-10 flex flex-col transition-all duration-500 hover:-translate-y-2 ${
                   t.featured
                     ? 'bg-gradient-to-br from-[#004B9B] to-[#003d82] text-white'
                     : 'bg-white text-[#1d1d1f]'

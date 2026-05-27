@@ -5,25 +5,31 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
 const nextConfig: NextConfig = {
   output: 'export',
   basePath,
-  // Trailing slash ensures CDN/static hosts serve index.html correctly
   trailingSlash: true,
-  // Compress output for smaller page payloads
   compress: true,
+
+  // Remove console.log in production builds
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Speed up builds by skipping type-check (run tsc separately in CI)
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+
   images: {
-    // Required for static export — optimization happens at build/CDN layer
     unoptimized: true,
-    // Prefer modern formats when served via an image CDN in front of the export
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ui-avatars.com',
-      },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'ui-avatars.com' },
     ],
+  },
+
+  // Improve module resolution performance
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
   },
 };
 

@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import { publicPath } from '@/lib/site';
@@ -59,7 +57,6 @@ function ClientCard({ name, img }: { name: string; img: string | null }) {
 export default function ClientsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Clients"
@@ -81,7 +78,6 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

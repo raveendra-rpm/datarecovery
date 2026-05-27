@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { useState } from 'react';
 import {
@@ -118,7 +116,6 @@ function FAQAccordion() {
 export default function DesktopLaptopRecovery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Desktop & Laptop Hard Drive Data Recovery Services"
@@ -439,7 +436,6 @@ export default function DesktopLaptopRecovery() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

@@ -74,6 +74,16 @@ p {
   }
 }
 
+/* GPU hint only for the marquee animation — avoids creating rogue layers elsewhere */
+.animate-marquee {
+  will-change: transform;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 4px; /* Very thin scrollbar */

@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -144,7 +142,6 @@ const pricingData = [
 export default function PriceAndCostPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Price and Cost"
@@ -247,7 +244,6 @@ export default function PriceAndCostPage() {
         </div>
       </div>
 
-      <Footer />
     </main>
   );
 }

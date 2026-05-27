@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import { publicPath } from '@/lib/site';
@@ -9,7 +7,6 @@ import { publicPath } from '@/lib/site';
 export default function Class100CleanRoomPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Class 100 Clean Room Method"
@@ -119,7 +116,6 @@ export default function Class100CleanRoomPage() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

@@ -1,6 +1,4 @@
-'use client';
 import React from 'react';
-
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import { publicPath } from '@/lib/site';

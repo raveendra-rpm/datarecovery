@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Montserrat, Open_Sans } from "next/font/google";
 import "@/styles/globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
+// Drop weight 400 — Montserrat is only used for headings; body text uses Open Sans
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   display: "swap",
   preload: true,
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["600", "700", "800", "900"],
 });
 
 const openSans = Open_Sans({
@@ -35,10 +38,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans"
+        className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans overflow-x-hidden"
         suppressHydrationWarning
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

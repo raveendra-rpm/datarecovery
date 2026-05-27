@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 
 const steps = [
@@ -30,7 +28,6 @@ const steps = [
 export default function RecoveryProcedurePage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Data Recovery Procedure"
@@ -87,7 +84,6 @@ export default function RecoveryProcedurePage() {
         </div>
       </div>
 
-      <Footer />
     </main>
   );
 }

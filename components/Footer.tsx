@@ -23,12 +23,12 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer 
+    <footer
       className="relative w-full bg-[#030303] text-white overflow-hidden font-sans border-t border-white/5 group"
       onMouseMove={handleMouseMove}
     >
       {/* Interactive Mouse Glow */}
-      <div 
+      <div
         ref={glowRef}
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
         style={{
@@ -95,11 +95,17 @@ export default function Footer() {
           <div className="flex flex-col lg:pl-10">
             <h4 className="text-[22px] font-bold mb-8 uppercase tracking-wide">Our Company</h4>
             <ul className="space-y-4">
-              {['About Us', 'Why Choose DSS', 'Our Clients', 'Our Testimonials', 'Vision & Mission'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
+              {[
+                { label: 'About Us', href: '/who-we-are/about-us' },
+                { label: 'Why Choose DSS', href: '/who-we-are/why-choose-us' },
+                { label: 'Our Clients', href: '/dss/clients' },
+                { label: 'Our Testimonials', href: '/dss/testimonials' },
+                { label: 'Vision & Mission', href: '/who-we-are/vision-mission' }
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
                     <ChevronRight size={14} className="text-[#FF1A1A] mr-2 flex-shrink-0" strokeWidth={3} />
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -110,11 +116,17 @@ export default function Footer() {
           <div className="flex flex-col lg:pl-4">
             <h4 className="text-[22px] font-bold mb-8 uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-4">
-              {['Pickup & Delivery', 'Price & Cost', 'Google Reviews', 'Blog & News', 'Sitemap'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
+              {[
+                { label: 'Pickup & Delivery', href: '/dss/pickup-and-delivery' },
+                { label: 'Price & Cost', href: '/price-and-cost' },
+                { label: 'Google Reviews', href: '#' },
+                { label: 'Blog & News', href: '/blogs' },
+                { label: 'Sitemap', href: '#' }
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
                     <ChevronRight size={14} className="text-[#FF1A1A] mr-2 flex-shrink-0" strokeWidth={3} />
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}

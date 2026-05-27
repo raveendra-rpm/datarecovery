@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import {
   Usb, AlertTriangle, ShieldAlert, Star, HardDrive, ShieldCheck, Camera, HelpCircle, Mail
@@ -30,7 +28,6 @@ function SectionHeading({ icon: Icon, title, iconBg, iconColor }: {
 export default function FlashCardRecovery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Flash Card Data Recovery"
@@ -189,7 +186,6 @@ export default function FlashCardRecovery() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

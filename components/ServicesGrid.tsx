@@ -7,12 +7,21 @@ import { Cpu, HardDrive, Server, ShieldCheck, FileSearch, Laptop, Archive, Shiel
 
 const services = [
   {
+    title: 'Data Recovery from desktop & Laptop',
+    subtitle: 'All Brands Supported',
+    badge: 'Free Pickup',
+    desc: 'Supporting all major brands and operating systems. We handle everything from liquid damage to hardware failure.',
+    icon: Laptop,
+    img: '/images/laptop_desktop_recovery.jpg',
+    tag: 'Starting ₹1,499',
+  },
+  {
     title: 'SSD Recovery',
     subtitle: 'Flash Storage Expert',
     badge: 'Most Popular',
     desc: "Solid State Drives use flash memory for storage. We specialize in recovering data from failed controllers and physical memory chips.",
     icon: Cpu,
-    img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80',
+    img: '/images/ssd_img.jpg',
     tag: 'Starting ₹2,999',
   },
   {
@@ -21,7 +30,7 @@ const services = [
     badge: 'High Success Rate',
     desc: 'Accidental drops or spills? We recover external drives from any physical or logical failure scenario with high success rates.',
     icon: HardDrive,
-    img: 'https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=800&q=80',
+    img: '/images/hdd_recovery_img.jpg',
     tag: 'Starting ₹1,999',
   },
   {
@@ -30,7 +39,7 @@ const services = [
     badge: 'Best Seller',
     desc: 'Our experts handle complex RAID configurations (0, 1, 5, 6, 10) and enterprise servers to minimize your business downtime.',
     icon: Server,
-    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+    img: '/images/raid_server.jpg',
     tag: 'Custom Quote',
   },
   {
@@ -39,7 +48,7 @@ const services = [
     badge: 'Secure',
     desc: 'Bypass complex encryption challenges. We have unparalleled experience with BitLocker, FileVault, and custom encryption.',
     icon: ShieldCheck,
-    img: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80',
+    img: '/images/encrypted_img.jpg',
     tag: 'Starting ₹3,999',
   },
   {
@@ -48,17 +57,8 @@ const services = [
     badge: 'Fast Turnaround',
     desc: 'Recover corrupted databases, deleted emails, and damaged document files with our specialized forensic tools.',
     icon: FileSearch,
-    img: 'https://images.unsplash.com/photo-1618044733300-9472054094ee?w=800&q=80',
+    img: '/images/file_mail_img.jpg',
     tag: 'Starting ₹999',
-  },
-  {
-    title: 'Laptop Data Recovery',
-    subtitle: 'All Brands Supported',
-    badge: 'Free Pickup',
-    desc: 'Supporting all major brands and operating systems. We handle everything from liquid damage to hardware failure.',
-    icon: Laptop,
-    img: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&q=80',
-    tag: 'Starting ₹1,499',
   },
   {
     title: 'Tape Data Recovery',
@@ -66,7 +66,7 @@ const services = [
     badge: 'Rare Expertise',
     desc: 'Expertise in legacy tape formats (LTO, DLT). We can read and recover data from degraded or aged magnetic media.',
     icon: Archive,
-    img: 'https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=800&q=80',
+    img: '/images/tape_data.jpg',
     tag: 'Custom Quote',
   },
   {
@@ -75,8 +75,17 @@ const services = [
     badge: 'Legal Evidence',
     desc: 'Recover critical footage from DVR/NVR systems. Essential for legal evidence and security audits.',
     icon: ShieldAlert,
-    img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80',
+    img: '/images/cctv_recovery_img.jpg',
     tag: 'Starting ₹2,499',
+  },
+  {
+    title: 'NAS Data Recovery',
+    subtitle: 'Network Attached Storage',
+    badge: 'Specialized',
+    desc: 'Expert recovery for multi-drive NAS enclosures, handling RAID configurations, corrupted volumes, and firmware issues.',
+    icon: Server,
+    img: '/images/nas_data.jpg',
+    tag: 'Custom Quote',
   },
 ];
 

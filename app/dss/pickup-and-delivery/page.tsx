@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import { publicPath } from '@/lib/site';
@@ -171,7 +169,6 @@ function ContactForm() {
 export default function PickupAndDelivery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Pickup & Delivery"
@@ -393,7 +390,6 @@ export default function PickupAndDelivery() {
         />
       </section>
 
-      <Footer />
     </main>
   );
 }

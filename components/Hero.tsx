@@ -57,7 +57,7 @@ export default function Hero() {
 
 
 
-      <div className="max-w-7xl 2xl:max-w-[1760px] 2xl:min-h-[calc(100vh-88px)] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-20 relative z-10 pt-24 2xl:pt-0 pb-32 2xl:pb-20 flex flex-col-reverse lg:flex-row items-center gap-10 2xl:gap-24">
+      <div className="max-w-7xl 2xl:max-w-[1760px] 2xl:min-h-[calc(100vh-88px)] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-20 relative z-10 pt-24 2xl:pt-10 pb-32 2xl:pb-20 flex flex-col-reverse lg:flex-row items-center gap-10 2xl:gap-24">
 
         {/* Left Column Content */}
         <div className="w-full lg:w-1/2 2xl:max-w-[820px] text-[#0f172a] mt-10 lg:mt-0">
@@ -65,7 +65,7 @@ export default function Hero() {
             DATA STORAGE SOLUTIONS
           </div>
 
-          <h1 className="text-3xl md:text-4xl 2xl:text-[68px] font-bold mb-4 2xl:mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-[56px] font-bold mb-4 2xl:mb-6 leading-tight">
             Best <span className="text-[#38bdf8]">Data Recovery Services</span> in Bangalore
           </h1>
 
@@ -138,10 +138,9 @@ export default function Hero() {
                 alt={`Hero Image ${index + 1}`}
                 fill
                 sizes="(min-width: 1536px) 880px, (min-width: 1024px) 50vw, 100vw"
-                className={`object-cover transition-opacity duration-700 ease-in-out ${index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
+                className={`object-cover transition-opacity duration-700 ease-in-out ${index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                 priority={index === 0}
-                loading="eager"
+                loading={index === 0 ? 'eager' : 'lazy'}
               />
             ))}
           </div>

@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Image from 'next/image';
 import Counter from '@/components/Counter';
@@ -9,7 +7,6 @@ import { Award, Settings, HardDrive, Database, Lock, Server, FileText, Cpu, Vide
 export default function WhyChooseUs() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section */}
       <PageHeader
@@ -296,7 +293,6 @@ export default function WhyChooseUs() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

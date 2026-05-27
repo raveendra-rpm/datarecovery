@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { Target, Eye, CheckCircle2 } from 'lucide-react';
 
@@ -21,7 +19,6 @@ export default function VisionMission() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section */}
       <PageHeader
@@ -167,7 +164,6 @@ export default function VisionMission() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

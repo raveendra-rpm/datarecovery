@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import {
   Database, AlertTriangle, CheckCircle, Star, Flame, HardDrive, FileWarning, HelpCircle, Cctv, ShieldAlert, Droplet, ArchiveX, ShieldX, Scissors
@@ -30,7 +28,6 @@ function SectionHeading({ icon: Icon, title, iconBg, iconColor }: {
 export default function TapesDataRecovery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Tapes Data Recovery"
@@ -169,7 +166,6 @@ export default function TapesDataRecovery() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { CheckCircle2, Star, ClipboardCheck, Lightbulb, Users, TrendingUp, Heart, Zap, ShieldCheck } from 'lucide-react';
 
@@ -25,7 +23,6 @@ const reviews = [
 export default function QualityPolicy() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section */}
       <PageHeader
@@ -144,7 +141,6 @@ export default function QualityPolicy() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

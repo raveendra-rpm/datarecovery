@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import {
   HardDrive, CheckCircle, Star, AlertTriangle, ShieldCheck, Usb, Info
@@ -30,7 +28,6 @@ function SectionHeading({ icon: Icon, title, iconBg, iconColor }: {
 export default function ExternalHardDrive() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="External Hard Drive Data Recovery"
@@ -193,7 +190,6 @@ export default function ExternalHardDrive() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { Star, Quote } from 'lucide-react';
 
@@ -139,7 +137,6 @@ function TestimonialCard({
 export default function TestimonialsPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Testimonials"
@@ -192,7 +189,6 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

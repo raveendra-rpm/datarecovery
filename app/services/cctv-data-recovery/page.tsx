@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import {
   Cctv, AlertTriangle, ShieldCheck, Star, Flame, HardDrive, FileWarning, HelpCircle, Video
@@ -30,7 +28,6 @@ function SectionHeading({ icon: Icon, title, iconBg, iconColor }: {
 export default function CctvDataRecovery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="CCTV Data Recovery"
@@ -178,7 +175,6 @@ export default function CctvDataRecovery() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

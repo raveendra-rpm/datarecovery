@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Link from 'next/link';
 import { ChevronUp, ChevronDown } from 'lucide-react';
@@ -144,7 +142,6 @@ export default function FAQsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="FAQs"
@@ -218,7 +215,6 @@ export default function FAQsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

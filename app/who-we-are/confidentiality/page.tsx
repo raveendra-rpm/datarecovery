@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { FileText, ArrowRight, Scale, Lock, ShieldCheck, BookOpen, Gavel, RefreshCcw } from 'lucide-react';
 
@@ -121,7 +119,6 @@ const ndaClauses = [
 export default function Confidentiality() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section */}
       <PageHeader
@@ -211,7 +208,6 @@ export default function Confidentiality() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

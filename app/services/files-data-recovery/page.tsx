@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import {
   FileText, Mail, FileSpreadsheet, Star, FileImage, ShieldCheck, FileKey, Wrench
@@ -30,7 +28,6 @@ function SectionHeading({ icon: Icon, title, iconBg, iconColor }: {
 export default function FilesDataRecovery() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
 
       <PageHeader
         title="Files Data Recovery Services"
@@ -151,7 +148,6 @@ export default function FilesDataRecovery() {
 
       </div>
 
-      <Footer />
     </main>
   );
 }

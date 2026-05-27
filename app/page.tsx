@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import LogoMarquee from '@/components/LogoMarquee';
 import AboutSection from '@/components/AboutSection';
@@ -13,12 +12,10 @@ const PricingSection = dynamic(() => import('@/components/PricingSection'));
 const CompanyOverview = dynamic(() => import('@/components/CompanyOverview'));
 const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'));
 const SEOServices = dynamic(() => import('@/components/SEOServices'));
-const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      <Header />
       <Hero />
       <LogoMarquee />
       <AboutSection />
@@ -30,7 +27,6 @@ export default function Home() {
       <CompanyOverview />
       <TestimonialsSection />
       <SEOServices />
-      <Footer />
     </main>
   );
 }
