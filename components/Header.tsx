@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { ChevronDown, Phone, Menu, X } from 'lucide-react';
 import { publicPath } from '@/lib/site';
@@ -82,6 +83,8 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const pathname = usePathname();
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -93,6 +96,11 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
+
+  // Close dropdown automatically when user navigates
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const warmMenuImages = useCallback(() => {
     preloadDropdownImages(data.map(item => item.img));
@@ -117,49 +125,47 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
       </button>
 
       <div
-        aria-hidden={!isOpen}
-        className={`absolute left-0 right-0 top-full ${menuHeight} bg-white shadow-xl border-x border-b border-gray-200 border-t-2 border-t-[#004b9b] z-50 rounded-b-lg overflow-hidden transition-[opacity,visibility] duration-150 ${isOpen ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none'}`}
+        className={`absolute left-0 right-0 top-full ${menuHeight} bg-white shadow-xl border-x border-b border-gray-200 border-t-2 border-t-[#004b9b] z-50 rounded-b-lg overflow-hidden transition-[opacity,visibility] duration-150 ${isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
       >
-          {/* Header bar */}
-          <div className="px-8 py-4 border-b border-gray-100 bg-gray-50">
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-700">
-              {label.toUpperCase()}
-            </p>
-          </div>
+        {/* Header bar */}
+        <div className="px-8 py-4 border-b border-gray-100 bg-gray-50">
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-700">
+            {label.toUpperCase()}
+          </p>
+        </div>
 
-          {/* Card Grid */}
-          <div className={`grid ${columns === 4 ? 'grid-cols-4' : 'grid-cols-3'} auto-rows-[94px] gap-5 ${gridHeight} px-8 py-6`}>
-            {data.map((item) => (
-              <Link
-                href={item.href || '#'}
-                key={item.title}
-                onClick={() => setIsOpen(false)}
-                prefetch={true}
-                tabIndex={isOpen ? undefined : -1}
-                className={`group/card border border-gray-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition-[border-color,box-shadow] duration-200 ${imageLeft ? 'flex flex-row' : ''}`}
-              >
-                <div className={`${imageLeft ? 'w-28 h-full shrink-0' : 'w-full h-32'} overflow-hidden bg-gray-100 relative`}>
-                  <Image
-                    src={publicPath(item.img)}
-                    alt={item.title}
-                    fill
-                    loading="lazy"
-                    sizes={imageLeft ? '112px' : '(min-width: 768px) 33vw, 100vw'}
-                    className="object-cover group-hover/card:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/20" />
-                </div>
-                <div className={`px-4 py-3 bg-white ${imageLeft ? 'flex flex-col justify-center' : ''}`}>
-                  <p className="text-[11px] font-bold uppercase tracking-wide text-gray-800 group-hover/card:text-[#004b9b] transition-colors leading-snug">
-                    {item.title}
-                  </p>
-                  <p className="text-[11px] text-gray-500 mt-1 leading-relaxed line-clamp-2">
-                    {item.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        {/* Card Grid */}
+        <div className={`grid ${columns === 4 ? 'grid-cols-4' : 'grid-cols-3'} auto-rows-[94px] gap-5 ${gridHeight} px-8 py-6`}>
+          {data.map((item) => (
+            <Link
+              href={item.href || '#'}
+              key={item.title}
+              prefetch={true}
+              tabIndex={isOpen ? undefined : -1}
+              className={`group/card border border-gray-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition-[border-color,box-shadow] duration-200 ${imageLeft ? 'flex flex-row' : ''}`}
+            >
+              <div className={`${imageLeft ? 'w-28 h-full shrink-0' : 'w-full h-32'} overflow-hidden bg-gray-100 relative`}>
+                <Image
+                  src={publicPath(item.img)}
+                  alt={item.title}
+                  fill
+                  loading="lazy"
+                  sizes={imageLeft ? '112px' : '(min-width: 768px) 33vw, 100vw'}
+                  className="object-cover group-hover/card:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+              <div className={`px-4 py-3 bg-white ${imageLeft ? 'flex flex-col justify-center' : ''}`}>
+                <p className="text-[11px] font-bold uppercase tracking-wide text-gray-800 group-hover/card:text-[#004b9b] transition-colors leading-snug">
+                  {item.title}
+                </p>
+                <p className="text-[11px] text-gray-500 mt-1 leading-relaxed line-clamp-2">
+                  {item.desc}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -209,7 +215,6 @@ const MobileNavAccordion = memo(function MobileNavAccordion({
             <Link
               key={item.title}
               href={item.href || '#'}
-              onClick={close}
               className="block text-sm text-slate-600 hover:text-[#004b9b] transition-colors"
             >
               {item.title}
@@ -227,6 +232,12 @@ export default function Header() {
 
   const openMenu = useCallback(() => setIsMobileMenuOpen(true), []);
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), []);
+  const pathname = usePathname();
+
+  // Close mobile menu on navigation
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   // Preload all dropdown images during browser idle time so they are
   // already cached when the user first hovers over a menu item.
@@ -324,12 +335,12 @@ export default function Header() {
 
         {/* Mobile Menu Links */}
         <div className="px-6 py-4 flex-1">
-          <Link href="/" onClick={closeMenu} className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Home
           </Link>
           <MobileNavAccordion label="Who We Are" data={whoWeAreData} setIsOpen={setIsMobileMenuOpen} />
           <MobileNavAccordion label="Services" data={servicesData} setIsOpen={setIsMobileMenuOpen} />
-          <Link href="/price-and-cost" onClick={closeMenu} className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/price-and-cost" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Price and Cost
           </Link>
           <MobileNavAccordion label="Data Recovery" data={dataRecoveryMethodsData} setIsOpen={setIsMobileMenuOpen} />
