@@ -8,36 +8,36 @@ import { publicPath } from '@/lib/site';
 
 // ── Dropdown Data ───────────────────────────────────────────────
 const whoWeAreData = [
-  { title: 'About Us', desc: 'Learn about our history and commitment to data recovery.', img: '/images/headers_img/about_us.jpg', href: '/who-we-are/about-us' },
-  { title: 'Why Choose Us', desc: 'Discover why thousands trust us with their critical data.', img: '/images/headers_img/why_choose_us.jpg', href: '/who-we-are/why-choose-us' },
-  { title: 'Vision & Mission', desc: 'Our goal is to be the world leader in data recovery.', img: '/images/headers_img/vision_mission.jpg', href: '/who-we-are/vision-mission' },
-  { title: 'Quality Policy', desc: 'Strict standards to ensure the highest success rates.', img: '/images/headers_img/quality_policy.jpg', href: '/who-we-are/quality-policy' },
-  { title: 'Confidentiality', desc: 'Your data is safe with our certified security protocols.', img: '/images/headers_img/confidentiality.jpg', href: '/who-we-are/confidentiality' },
+  { title: 'About Us', desc: 'Learn about our history and commitment to data recovery.', img: '/images/headers_img/about_us.jpg', href: '/who-we-are/about-us/' },
+  { title: 'Why Choose Us', desc: 'Discover why thousands trust us with their critical data.', img: '/images/headers_img/why_choose_us.jpg', href: '/who-we-are/why-choose-us/' },
+  { title: 'Vision & Mission', desc: 'Our goal is to be the world leader in data recovery.', img: '/images/headers_img/vision_mission.jpg', href: '/who-we-are/vision-mission/' },
+  { title: 'Quality Policy', desc: 'Strict standards to ensure the highest success rates.', img: '/images/headers_img/quality_policy.jpg', href: '/who-we-are/quality-policy/' },
+  { title: 'Confidentiality', desc: 'Your data is safe with our certified security protocols.', img: '/images/headers_img/confidentiality.jpg', href: '/who-we-are/confidentiality/' },
 ];
 
 const servicesData = [
-  { title: 'Desktop & Laptop Recovery', desc: 'Expert recovery for all computer types.', img: '/images/headers_img/desktop_laptop.jpg', href: '/services/desktop-laptop-recovery' },
-  { title: 'SSD Data Recovery', desc: 'Fast recovery from all failed solid state drives.', img: '/images/headers_img/ssd_recovery.jpg', href: '/services/ssd-data-recovery' },
-  { title: 'Encrypted Data Recovery', desc: 'Decrypting and recovering locked files.', img: '/images/headers_img/encrypted_data.jpg', href: '/services/encrypted-data-recovery' },
-  { title: 'RAID Server Recovery', desc: 'Enterprise-level RAID and server recovery.', img: '/images/headers_img/raid_server.jpg', href: '/services/raid-server-recovery' },
-  { title: 'External Hard Drive', desc: 'Recovering data from portable drives.', img: '/images/headers_img/external_hard_drive.jpg', href: '/services/external-hard-drive' },
-  { title: 'Files Data Recovery', desc: 'Specialized recovery for all file types.', img: '/images/headers_img/files_data_recovery.jpg', href: '/services/files-data-recovery' },
-  { title: 'Flash Card Recovery', desc: 'SD cards, USB sticks, and more.', img: '/images/headers_img/flash_card_recovery.jpg', href: '/services/flash-card-recovery' },
-  { title: 'CCTV Data Recovery', desc: 'Recovering footage from security systems.', img: '/images/headers_img/cctv_data_recovery.jpg', href: '/services/cctv-data-recovery' },
-  { title: 'Tapes Data Recovery', desc: 'Legacy tape and archival recovery.', img: '/images/headers_img/tapes_data_recovery.jpg', href: '/services/tapes-data-recovery' },
+  { title: 'Desktop & Laptop Recovery', desc: 'Expert recovery for all computer types.', img: '/images/headers_img/desktop_laptop.jpg', href: '/services/desktop-laptop-recovery/' },
+  { title: 'SSD Data Recovery', desc: 'Fast recovery from all failed solid state drives.', img: '/images/headers_img/ssd_recovery.jpg', href: '/services/ssd-data-recovery/' },
+  { title: 'Encrypted Data Recovery', desc: 'Decrypting and recovering locked files.', img: '/images/headers_img/encrypted_data.jpg', href: '/services/encrypted-data-recovery/' },
+  { title: 'RAID Server Recovery', desc: 'Enterprise-level RAID and server recovery.', img: '/images/headers_img/raid_server.jpg', href: '/services/raid-server-recovery/' },
+  { title: 'External Hard Drive', desc: 'Recovering data from portable drives.', img: '/images/headers_img/external_hard_drive.jpg', href: '/services/external-hard-drive/' },
+  { title: 'Files Data Recovery', desc: 'Specialized recovery for all file types.', img: '/images/headers_img/files_data_recovery.jpg', href: '/services/files-data-recovery/' },
+  { title: 'Flash Card Recovery', desc: 'SD cards, USB sticks, and more.', img: '/images/headers_img/flash_card_recovery.jpg', href: '/services/flash-card-recovery/' },
+  { title: 'CCTV Data Recovery', desc: 'Recovering footage from security systems.', img: '/images/headers_img/cctv_data_recovery.jpg', href: '/services/cctv-data-recovery/' },
+  { title: 'Tapes Data Recovery', desc: 'Legacy tape and archival recovery.', img: '/images/headers_img/tapes_data_recovery.jpg', href: '/services/tapes-data-recovery/' },
 ];
 
 const dataRecoveryMethodsData = [
-  { title: 'Recovery Methods', desc: 'The advanced techniques we use for recovery.', img: '/images/headers_img/recovery_methods.jpg', href: '/data-recovery/recovery-methods' },
-  { title: 'Recovery Procedure', desc: 'Step-by-step look at our recovery process.', img: '/images/headers_img/recovery_procedure.jpg', href: '/data-recovery/recovery-procedure' },
-  { title: 'Class 100 Clean Room', desc: 'Our certified dust-free environment.', img: '/images/headers_img/data_recovery_clean_room.jpg', href: '/data-recovery/class-100-clean-room' },
+  { title: 'Recovery Methods', desc: 'The advanced techniques we use for recovery.', img: '/images/headers_img/recovery_methods.jpg', href: '/data-recovery/recovery-methods/' },
+  { title: 'Recovery Procedure', desc: 'Step-by-step look at our recovery process.', img: '/images/headers_img/recovery_procedure.jpg', href: '/data-recovery/recovery-procedure/' },
+  { title: 'Class 100 Clean Room', desc: 'Our certified dust-free environment.', img: '/images/headers_img/data_recovery_clean_room.jpg', href: '/data-recovery/class-100-clean-room/' },
 ];
 
 const dssData = [
-  { title: 'Pickup & Delivery', desc: 'Safe transport of your media to our lab.', img: '/images/headers_img/pickup_delivery.jpg', href: '/dss/pickup-and-delivery' },
-  { title: 'FAQs', desc: 'Answers to common data recovery questions.', img: '/images/headers_img/faqs.jpg', href: '/dss/faqs' },
-  { title: 'Clients', desc: 'Organizations that trust DSS for recovery.', img: '/images/headers_img/clients.jpg', href: '/dss/clients' },
-  { title: 'Testimonials', desc: 'What our happy customers have to say.', img: '/images/headers_img/testimonials.jpg', href: '/dss/testimonials' },
+  { title: 'Pickup & Delivery', desc: 'Safe transport of your media to our lab.', img: '/images/headers_img/pickup_delivery.jpg', href: '/dss/pickup-and-delivery/' },
+  { title: 'FAQs', desc: 'Answers to common data recovery questions.', img: '/images/headers_img/faqs.jpg', href: '/dss/faqs/' },
+  { title: 'Clients', desc: 'Organizations that trust DSS for recovery.', img: '/images/headers_img/clients.jpg', href: '/dss/clients/' },
+  { title: 'Testimonials', desc: 'What our happy customers have to say.', img: '/images/headers_img/testimonials.jpg', href: '/dss/testimonials/' },
 ];
 
 // ── Mega Menu Dropdown ───────────────────────────────────────────
@@ -284,12 +284,14 @@ export default function Header() {
             <NavLink label="Home" href="/" />
             <MegaMenuDropdown label="Who We Are" data={whoWeAreData} columns={3} imageLeft />
             <MegaMenuDropdown label="Services" data={servicesData} columns={3} imageLeft menuSize="tall" />
-            <NavLink label="Price and Cost" href="/price-and-cost" />
+            <NavLink label="Price and Cost" href="/price-and-cost/" />
             <MegaMenuDropdown label="Data Recovery" data={dataRecoveryMethodsData} columns={3} imageLeft menuSize="compact" />
             <MegaMenuDropdown label="DSS" data={dssData} columns={4} imageLeft menuSize="compact" />
-            <NavLink label="Claims" href="/claims" />
-            <NavLink label="Contacts" href="/contacts" />
-            <NavLink label="Blogs" href="/blogs" />
+            <div className="flex items-center gap-1 xl:gap-2">
+              <NavLink label="Claims" href="/claims/" />
+              <NavLink label="Contacts" href="/contacts/" />
+              <NavLink label="Blogs" href="/blogs/" />
+            </div>
             <a
               href="tel:+919880872536"
               className="inline-flex items-center justify-center gap-1 xl:gap-2 rounded-full border border-[#e11f27] bg-[#e11f27] px-4 xl:px-5 2xl:px-7 py-2.5 xl:py-3 2xl:py-3.5 text-[12px] xl:text-xs 2xl:text-[15px] font-extrabold text-white transition-colors hover:bg-[#c91b22] whitespace-nowrap"
@@ -340,18 +342,18 @@ export default function Header() {
           </Link>
           <MobileNavAccordion label="Who We Are" data={whoWeAreData} setIsOpen={setIsMobileMenuOpen} />
           <MobileNavAccordion label="Services" data={servicesData} setIsOpen={setIsMobileMenuOpen} />
-          <Link href="/price-and-cost" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/price-and-cost/" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Price and Cost
           </Link>
           <MobileNavAccordion label="Data Recovery" data={dataRecoveryMethodsData} setIsOpen={setIsMobileMenuOpen} />
           <MobileNavAccordion label="DSS" data={dssData} setIsOpen={setIsMobileMenuOpen} />
-          <Link href="/claims" onClick={closeMenu} className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/claims/" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Claims
           </Link>
-          <Link href="/contacts" onClick={closeMenu} className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/contacts/" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Contacts
           </Link>
-          <Link href="/blogs" onClick={closeMenu} className="block py-4 font-bold text-slate-800 border-b border-slate-100">
+          <Link href="/blogs/" className="block py-4 font-bold text-slate-800 border-b border-slate-100">
             Blogs
           </Link>
         </div>
