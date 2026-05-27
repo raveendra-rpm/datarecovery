@@ -84,7 +84,7 @@ function MegaMenuDropdown({
 
       {open && (
         <div
-          className={`fixed left-4 right-4 ${menuHeight} bg-white shadow-2xl border border-gray-200 z-50 rounded-lg overflow-hidden`}
+          className={`fixed left-4 right-4 ${menuHeight} bg-white shadow-2xl border border-gray-200 z-50 rounded-lg overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200`}
           style={{ top: '71px' }}
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
@@ -109,7 +109,7 @@ function MegaMenuDropdown({
                     src={publicPath(item.img)}
                     alt={item.title}
                     fill
-                    loading="lazy"
+                    priority={true}
                     sizes={imageLeft ? '112px' : '(min-width: 768px) 33vw, 100vw'}
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -137,7 +137,7 @@ function MegaMenuDropdown({
 function NavLink({ label }: { label: string }) {
   return (
     <Link
-      href="#"
+      href="/"
       className="text-sm 2xl:text-[15px] font-semibold text-[#0f172a] rounded-full px-3 py-2 2xl:px-4 2xl:py-2.5 border border-transparent hover:bg-[#e6f4ff] hover:text-[#004b9b] transition-all"
     >
       {label}
@@ -203,7 +203,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white/80 sticky top-0 z-50">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(243,250,255,0.78))] backdrop-blur-xl border-b border-[#004b9b]/10" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(243,250,255,0.78))] backdrop-blur-md border-b border-[#004b9b]/10" />
       <div className="max-w-[1366px] 2xl:max-w-[1760px] mx-auto px-4 sm:px-6 2xl:px-10">
         <div className="relative flex items-center justify-between h-[70px] 2xl:h-[88px] gap-8 2xl:gap-16">
 
@@ -222,7 +222,7 @@ export default function Header() {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center justify-end gap-2 2xl:gap-3">
+          <nav className="hidden md:flex items-center justify-end gap-1 2xl:gap-3">
             <NavLink label="Home" />
             <MegaMenuDropdown label="Who We Are" data={whoWeAreData} columns={3} imageLeft />
             <MegaMenuDropdown label="Services" data={servicesData} columns={3} imageLeft menuSize="tall" />
@@ -246,6 +246,12 @@ export default function Header() {
             >
               Contacts
             </Link>
+            <Link
+              href="/blogs"
+              className="text-sm 2xl:text-[15px] font-semibold text-[#0f172a] rounded-full px-3 py-2 2xl:px-4 2xl:py-2.5 border border-transparent hover:bg-[#e6f4ff] hover:text-[#004b9b] transition-all"
+            >
+              Blogs
+            </Link>
             <a
               href="tel:+919880872536"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[#e11f27] bg-[#e11f27] px-5 2xl:px-7 py-3 2xl:py-3.5 text-xs 2xl:text-[15px] font-extrabold text-white transition-colors hover:bg-[#c91b22] whitespace-nowrap"
@@ -268,7 +274,7 @@ export default function Header() {
 
       {/* ── Mobile Menu Overlay ─────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-[100] bg-white flex flex-col md:hidden overflow-y-auto transition-transform duration-400 ease-in-out ${isMobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
+        className={`fixed inset-0 z-[100] bg-white flex flex-col md:hidden overflow-y-auto transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
           }`}
       >
         {/* Mobile Header */}
@@ -321,6 +327,13 @@ export default function Header() {
             className="block py-4 font-bold text-slate-800 border-b border-slate-100"
           >
             Contacts
+          </Link>
+          <Link
+            href="/blogs"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-4 font-bold text-slate-800 border-b border-slate-100"
+          >
+            Blogs
           </Link>
         </div>
 

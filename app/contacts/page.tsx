@@ -152,7 +152,7 @@ export default function ContactsPage() {
             <div className="space-y-8">
               <div>
                 <p className="text-[#8e74cc] text-[11px] font-bold uppercase tracking-widest mb-2">
-                  // CONTACT DETAILS
+                  {"// CONTACT DETAILS"}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
                   Contact us
@@ -229,9 +229,10 @@ export default function ContactsPage() {
           width="100%"
           height="100%"
           style={{ border: 0 }}
-          allowFullScreen
+          allowFullScreen={true}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          suppressHydrationWarning
         />
       </section>
 
