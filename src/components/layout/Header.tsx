@@ -90,7 +90,7 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
     <div className="h-full flex items-center group/menu" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-0.5 2xl:gap-1.5 text-[11px] lg:text-[12px] 2xl:text-[15px] font-semibold rounded-full px-1.5 py-1.5 2xl:px-4 2xl:py-2.5 border border-transparent whitespace-nowrap text-[#0f172a] group-hover/menu:bg-[#e6f4ff] group-hover/menu:text-[#004b9b] transition-colors`}
+        className={`flex items-center gap-0.5 2xl:gap-1 3xl:gap-1.5 text-[11px] 2xl:text-[13px] 3xl:text-[15px] font-semibold rounded-full px-1 py-1 2xl:px-2.5 2xl:py-2 3xl:px-4 3xl:py-2.5 border border-transparent whitespace-nowrap text-[#0f172a] group-hover/menu:bg-[#e6f4ff] group-hover/menu:text-[#004b9b] transition-colors`}
       >
         {label}
         <ChevronDown
@@ -153,7 +153,7 @@ const NavLink = memo(function NavLink({ label, href = '/' }: { label: string; hr
     <Link
       href={href}
       prefetch={false}
-      className="text-[11px] lg:text-[12px] 2xl:text-[15px] font-semibold text-[#0f172a] rounded-full px-1.5 py-1.5 2xl:px-4 2xl:py-2.5 border border-transparent hover:bg-[#e6f4ff] hover:text-[#004b9b] transition-colors whitespace-nowrap"
+      className="text-[11px] 2xl:text-[13px] 3xl:text-[15px] font-semibold text-[#0f172a] rounded-full px-1 py-1 2xl:px-2.5 2xl:py-2 3xl:px-4 3xl:py-2.5 border border-transparent hover:bg-[#e6f4ff] hover:text-[#004b9b] transition-colors whitespace-nowrap"
     >
       {label}
     </Link>
@@ -237,7 +237,7 @@ export default function Header() {
                 alt="Data Storage Solutions"
                 width={210}
                 height={62}
-                className="h-8 2xl:h-12 w-auto object-contain"
+                className="h-8 2xl:h-10 3xl:h-12 w-auto object-contain"
                 priority
                 loading="eager"
               />
@@ -245,21 +245,21 @@ export default function Header() {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden xl:flex items-center justify-end gap-0 2xl:gap-3 h-full flex-shrink">
+          <nav className="hidden xl:flex items-center justify-end gap-0 2xl:gap-1.5 3xl:gap-3 h-full flex-shrink">
             <NavLink label="Home" href="/" />
             <MegaMenuDropdown label="Who We Are" data={whoWeAreData} columns={3} imageLeft />
             <MegaMenuDropdown label="Services" data={servicesData} columns={3} imageLeft menuSize="tall" />
             <NavLink label="Price and Cost" href="/price-and-cost/" />
             <MegaMenuDropdown label="Data Recovery" data={dataRecoveryMethodsData} columns={3} imageLeft menuSize="compact" />
             <MegaMenuDropdown label="DSS" data={dssData} columns={4} imageLeft menuSize="compact" />
-            <div className="flex items-center gap-0 2xl:gap-2">
+            <div className="flex items-center gap-0 2xl:gap-1 3xl:gap-2">
               <NavLink label="Claims" href="/claims/" />
               <NavLink label="Contacts" href="/contacts/" />
               <NavLink label="Blogs" href="/blogs/" />
             </div>
             <a
               href="tel:+919880872536"
-              className="inline-flex items-center justify-center gap-1 rounded-full border border-[#e11f27] bg-[#e11f27] px-2.5 py-1.5 2xl:px-7 2xl:py-3.5 text-[11px] lg:text-[12px] 2xl:text-[15px] font-extrabold text-white transition-colors hover:bg-[#c91b22] whitespace-nowrap ml-1 2xl:ml-2 flex-shrink-0"
+              className="inline-flex items-center justify-center gap-1 rounded-full border border-[#e11f27] bg-[#e11f27] px-2 py-1.5 2xl:px-4 2xl:py-2.5 3xl:px-7 3xl:py-3.5 text-[11px] 2xl:text-[13px] 3xl:text-[15px] font-extrabold text-white transition-colors hover:bg-[#c91b22] whitespace-nowrap ml-1 2xl:ml-2 flex-shrink-0"
             >
               <Phone size={16} strokeWidth={2.5} />
               +91 988087 2536
