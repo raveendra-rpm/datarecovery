@@ -10,7 +10,7 @@ const plans = [
     time: "1 to 2Day",
     price: "Rs 2,000/-",
     suffix: "to 3,000/-",
-    depends: "",
+    depends: "Depends on Conditions",
     features: [
       "DELETED DATA",
       "FORMATTED DATA",
