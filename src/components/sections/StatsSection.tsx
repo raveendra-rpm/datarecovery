@@ -18,7 +18,7 @@ export default function StatsSection() {
             <h3 className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00f2fe] to-[#4facfe] mb-4 tracking-tighter">
               26,000+
             </h3>
-            <h4 className="text-white text-2xl font-bold mb-5 tracking-tight">Completed Projects</h4>
+            <h4 className="text-white text-2xl font-bold mb-5 tracking-tight">Complete Projects</h4>
             <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors">
               Unmatched expertise in delivering successful recoveries for businesses and individuals worldwide. Our track record speaks for itself.
             </p>
