@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
 
 const nextConfig: NextConfig = {
+  output: 'export',
   basePath,
   trailingSlash: true,
   compress: true,
@@ -18,6 +19,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
