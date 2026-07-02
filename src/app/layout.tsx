@@ -3,6 +3,7 @@ import { Montserrat, Open_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 // Drop weight 400 — Montserrat is only used for headings; body text uses Open Sans
 const montserrat = Montserrat({
@@ -24,6 +25,38 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Best Data Recovery Services in Bangalore | Data Storage Solutions",
   description: "Expert data recovery services in Bangalore. Recover data from hard disk, SSD, RAID, laptop and more. 22+ years experience. Call +91 9880872536.",
+  metadataBase: new URL('https://datastoragesolutions.in'), // Assuming the domain, or replace with actual
+  openGraph: {
+    title: "Data Storage Solutions - Expert Data Recovery",
+    description: "Expert data recovery services in Bangalore. Recover data from hard disk, SSD, RAID, laptop and more. 22+ years experience.",
+    url: "/",
+    siteName: "Data Storage Solutions",
+    images: [
+      {
+        url: "/images/data_recovery_logo.webp",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Data Recovery Services in Bangalore",
+    description: "Expert data recovery services with a Class 100 Clean Room.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -44,6 +77,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

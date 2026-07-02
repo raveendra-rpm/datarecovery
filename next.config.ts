@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: process.env.NEXT_STATIC_EXPORT === 'true' ? 'export' : undefined,
   basePath,
   trailingSlash: true,
   compress: true,
@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
   },
 
   images: {
-    unoptimized: true,
+    unoptimized: process.env.NEXT_STATIC_EXPORT === 'true',
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },

@@ -58,15 +58,12 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
   const menuHeight = menuSize === 'tall' ? 'h-[424px]' : menuSize === 'compact' ? 'h-[204px]' : 'h-[314px]';
   const gridHeight = menuSize === 'tall' ? 'h-[370px]' : menuSize === 'compact' ? 'h-[150px]' : 'h-[260px]';
   const [isOpen, setIsOpen] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
 
   const handleLinkClick = () => {
-    setIsClicked(true);
     setIsOpen(false);
-    setTimeout(() => setIsClicked(false), 800); // Re-enable hover after transition
   };
 
   useEffect(() => {
@@ -87,7 +84,12 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
   }, [pathname]);
 
   return (
-    <div className="h-full flex items-center group/menu" ref={dropdownRef}>
+    <div
+      className="h-full flex items-center group/menu"
+      ref={dropdownRef}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-0.5 2xl:gap-1 3xl:gap-1.5 text-[11px] 2xl:text-[13px] 3xl:text-[15px] font-semibold rounded-full px-1 py-1 2xl:px-2.5 2xl:py-2 3xl:px-4 3xl:py-2.5 border border-transparent whitespace-nowrap text-[#0f172a] group-hover/menu:bg-[#e6f4ff] group-hover/menu:text-[#004b9b] transition-colors`}
@@ -95,12 +97,12 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
         {label}
         <ChevronDown
           size={15}
-          className={`${isOpen ? 'rotate-180' : ''}`}
+          className={`${isOpen ? 'rotate-180' : ''} transition-transform duration-200`}
         />
       </button>
 
       <div
-        className={`absolute left-0 right-0 top-full ${menuHeight} bg-white shadow-xl border-x border-b border-gray-200 border-t-2 border-t-[#004b9b] z-50 rounded-b-lg overflow-hidden transition-[opacity,visibility] duration-150 ${isClicked ? '!opacity-0 !invisible !pointer-events-none' : (isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:pointer-events-auto')}`}
+        className={`absolute left-0 right-0 top-full ${menuHeight} bg-white shadow-xl border-x border-b border-gray-200 border-t-2 border-t-[#004b9b] z-50 rounded-b-lg overflow-hidden ${isOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
       >
         {/* Header bar */}
         <div className="px-8 py-4 border-b border-gray-100 bg-gray-50">
@@ -115,7 +117,6 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
             <Link
               href={item.href || '#'}
               key={item.title}
-              prefetch={false}
               onClick={handleLinkClick}
               tabIndex={isOpen ? undefined : -1}
               className={`group/card border border-gray-200 rounded-xl overflow-hidden hover:border-blue-400 hover:shadow-md transition-[border-color,box-shadow] duration-200 ${imageLeft ? 'flex flex-row' : ''}`}
@@ -125,7 +126,6 @@ const MegaMenuDropdown = memo(function MegaMenuDropdown({
                   src={publicPath(item.img)}
                   alt={item.title}
                   fill
-                  loading="lazy"
                   sizes={imageLeft ? '112px' : '(min-width: 768px) 33vw, 100vw'}
                   className="object-cover group-hover/card:scale-105 transition-transform duration-300"
                 />
@@ -231,7 +231,16 @@ export default function Header() {
 
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link 
+              href="/" 
+              className="flex items-center"
+              onClick={(e) => {
+                if (pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+            >
               <Image
                 src={publicPath('/images/data_recovery_logo.webp')}
                 alt="Data Storage Solutions"
@@ -284,13 +293,26 @@ export default function Header() {
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 h-[70px] border-b border-slate-100 shrink-0 bg-white sticky top-0 z-10">
-          <Image
-            src={publicPath('/images/data_recovery_logo.webp')}
-            alt="Data Storage Solutions"
-            width={160}
-            height={48}
-            className="h-8 w-auto object-contain"
-          />
+          <Link 
+            href="/"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                closeMenu();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                closeMenu();
+              }
+            }}
+          >
+            <Image
+              src={publicPath('/images/data_recovery_logo.webp')}
+              alt="Data Storage Solutions"
+              width={160}
+              height={48}
+              className="h-8 w-auto object-contain"
+            />
+          </Link>
           <button
             className="p-2 -mr-2 text-[#1d1d1f] hover:text-[#e11f27] transition-colors hover:rotate-90 active:scale-90"
             onClick={closeMenu}

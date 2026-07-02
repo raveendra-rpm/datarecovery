@@ -4,124 +4,129 @@ import { useState } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Globe, Mail, Phone, CheckCircle } from 'lucide-react';
 
-const services = [
-  'Hard Disk Drive (HDD)',
-  'Solid State Drive (SSD)',
-  'External Hard Drive',
-  'USB Flash Drive / Memory Card',
-  'RAID / Server Storage',
-  'Tape Media',
-  'CCTV / DVR Storage',
-  'Laptop & Desktop Drives',
-];
+const inputClass =
+  'w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-300 transition';
+const labelClass = 'block text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-1.5';
 
 function ContactForm() {
-  const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    message: '',
-  });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
+  const [errors, setErrors] = useState<Partial<typeof form>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validate = () => {
+    const e: Partial<typeof form> = {};
+    if (!form.name.trim()) e.name = 'Name is required';
+    if (!form.email.trim()) e.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email';
+    if (!form.phone.trim()) e.phone = 'Phone is required';
+    else if (!/^\d{7,15}$/.test(form.phone)) e.phone = 'Enter a valid phone number (digits only)';
+    return e;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, '');
+    setForm(f => ({ ...f, phone: val }));
+    if (errors.phone) setErrors(ev => ({ ...ev, phone: '' }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setLoading(true);
+    setServerError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setSubmitted(true);
+    } catch {
+      setServerError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center bg-[#bce3f6] rounded-sm p-7">
+      <div className="flex flex-col items-center justify-center py-14 text-center bg-slate-50 rounded-2xl border border-slate-200 p-8">
         <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mb-4">
           <CheckCircle className="w-8 h-8 text-emerald-500" />
         </div>
         <h3 className="text-slate-800 font-bold text-lg mb-2">Thank You!</h3>
-        <p className="text-slate-600 text-sm">
-          We&apos;ve received your request. Our team will contact you shortly.
-        </p>
+        <p className="text-slate-500 text-sm">We&apos;ve received your message. Our team will contact you shortly.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-[#bce3f6] p-8">
-      <h3 className="text-slate-900 font-bold text-2xl mb-6">Interact with us :</h3>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="c-name" className="block text-xs font-semibold text-slate-600 mb-1.5">
-            Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="c-name"
-            type="text"
-            required
-            value={form.name}
-            onChange={e => setForm({ ...form, name: e.target.value })}
-            className="w-full bg-[#f4f4f4] border border-slate-300 px-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#3da3ff] focus:border-[#3da3ff] transition"
-          />
+    <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+      <form onSubmit={handleSubmit} noValidate className="space-y-5">
+        {/* Row 1: Name + Email */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="c-name" className={labelClass}>Name :</label>
+            <input
+              id="c-name" type="text" value={form.name}
+              onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(ev => ({ ...ev, name: '' })); }}
+              className={`${inputClass} ${errors.name ? 'border-red-400 focus:ring-red-200' : ''}`}
+            />
+            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+          </div>
+          <div>
+            <label htmlFor="c-email" className={labelClass}>Email :</label>
+            <input
+              id="c-email" type="email" value={form.email}
+              onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setErrors(ev => ({ ...ev, email: '' })); }}
+              className={`${inputClass} ${errors.email ? 'border-red-400 focus:ring-red-200' : ''}`}
+            />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+          </div>
         </div>
-        <div>
-          <label htmlFor="c-phone" className="block text-xs font-semibold text-slate-600 mb-1.5">
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="c-phone"
-            type="tel"
-            required
-            placeholder="081234 56789"
-            value={form.phone}
-            onChange={e => setForm({ ...form, phone: e.target.value })}
-            className="w-full bg-[#f4f4f4] border border-slate-300 px-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#3da3ff] focus:border-[#3da3ff] transition"
-          />
+
+        {/* Row 2: Phone + Company */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="c-phone" className={labelClass}>Phone :</label>
+            <input
+              id="c-phone" type="tel" inputMode="numeric" value={form.phone}
+              onChange={handlePhoneChange}
+              className={`${inputClass} ${errors.phone ? 'border-red-400 focus:ring-red-200' : ''}`}
+            />
+            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+          </div>
+          <div>
+            <label htmlFor="c-company" className={labelClass}>Company :</label>
+            <input
+              id="c-company" type="text" value={form.company}
+              onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+              className={inputClass}
+            />
+          </div>
         </div>
+
+        {/* Row 3: Message */}
         <div>
-          <label htmlFor="c-email" className="block text-xs font-semibold text-slate-600 mb-1.5">
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="c-email"
-            type="email"
-            required
-            value={form.email}
-            onChange={e => setForm({ ...form, email: e.target.value })}
-            className="w-full bg-[#f4f4f4] border border-slate-300 px-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#3da3ff] focus:border-[#3da3ff] transition"
-          />
-        </div>
-        <div>
-          <label htmlFor="c-service" className="block text-xs font-semibold text-slate-600 mb-1.5">
-            Services <span className="text-red-500">*</span>
-          </label>
-          <select
-            id="c-service"
-            required
-            value={form.service}
-            onChange={e => setForm({ ...form, service: e.target.value })}
-            className="w-full bg-[#f4f4f4] border border-slate-300 px-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#3da3ff] focus:border-[#3da3ff] transition"
-          >
-            <option value=""></option>
-            {services.map(s => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="c-message" className="block text-xs font-semibold text-slate-600 mb-1.5">
-            Message
-          </label>
+          <label htmlFor="c-message" className={labelClass}>How Can We Assist You :</label>
           <textarea
-            id="c-message"
-            rows={3}
-            value={form.message}
-            onChange={e => setForm({ ...form, message: e.target.value })}
-            className="w-full bg-[#f4f4f4] border border-slate-300 px-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#3da3ff] focus:border-[#3da3ff] transition resize-none"
+            id="c-message" rows={5} value={form.message}
+            onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+            className={`${inputClass} resize-none`}
           />
         </div>
+
+        {serverError && <p className="text-red-500 text-xs font-medium">{serverError}</p>}
+
         <button
-          type="submit"
-          className="bg-[#24a0ed] hover:bg-[#1b88cd] text-white text-sm font-semibold py-2 px-6 transition-colors duration-200"
+          type="submit" disabled={loading}
+          className="w-full bg-slate-900 hover:bg-slate-700 disabled:opacity-60 text-white text-xs font-bold uppercase tracking-widest py-4 rounded-xl transition-colors duration-200"
         >
-          Submit Form
+          {loading ? 'Sending...' : 'Send Message'}
         </button>
       </form>
     </div>
