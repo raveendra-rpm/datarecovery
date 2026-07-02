@@ -231,8 +231,8 @@ export default function Header() {
 
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="flex items-center"
               onClick={(e) => {
                 if (pathname === '/') {
@@ -293,7 +293,7 @@ export default function Header() {
       >
         {/* Mobile Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 h-[70px] border-b border-slate-100 shrink-0 bg-white sticky top-0 z-10">
-          <Link 
+          <Link
             href="/"
             onClick={(e) => {
               if (pathname === '/') {
