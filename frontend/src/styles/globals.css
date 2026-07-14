@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #f8fafc; /* slate-50 */
+  --foreground: #0f172a; /* slate-900 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a; /* slate-900 */
+    --foreground: #f8fafc; /* slate-50 */
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --breakpoint-3xl: 1920px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+textarea,
+select,
+a,
+span,
+div {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-black,
+.font-extrabold,
+.font-bold,
+[class*="text-3xl"],
+[class*="text-4xl"],
+[class*="text-5xl"],
+[class*="text-6xl"],
+[class*="text-7xl"],
+[class*="text-[2rem]"],
+[class*="text-[2.6rem]"],
+[class*="text-[3.4rem]"],
+[class*="text-[56px]"],
+[class*="text-[64px]"] {
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+p {
+  font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-slate-800/50 shadow-sm;
+  }
+}
+
+/* GPU hint only for the marquee animation — avoids creating rogue layers elsewhere */
+.animate-marquee {
+  will-change: transform;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px; /* Very thin scrollbar */
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a0aec0; /* Same standard grey color */
+  border-radius: 10px; /* Rounded corners for better look */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096; /* Darker grey on hover */
+}
+
+/* Firefox compatibility */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a0aec0 transparent;
+}
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* 1920px wide screen fix */
+@media (min-width: 1920px) {
+  .max-w-\[1366px\] {
+    max-width: 1760px !important;
+  }
+  .max-w-7xl {
+    max-width: 1760px !important;
+  }
+}
