@@ -1,6 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -19,7 +21,29 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// Security: Helmet adds HTTP security headers
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" })); // Allows serving images to frontend
+
+// Security: Rate Limiting prevents brute-force attacks (e.g. login spam)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 300, // Limit each IP to 300 requests per window
+  message: { error: 'Too many requests, please try again later.' }
+});
+app.use('/api', limiter); // Only apply to API routes
+
+// Security: Restrict CORS (Only allow your frontend to make requests)
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:3002',
+    process.env.FRONTEND_URL || 'https://datastoragesolutions.in'
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
