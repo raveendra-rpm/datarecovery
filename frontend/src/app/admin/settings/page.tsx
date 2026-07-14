@@ -52,7 +52,7 @@ export default function SettingsPage() {
         },
         {
           headers: {
-            Authorization: `Bearer ${session?.accessToken}`,
+            Authorization: `Bearer ${(session as any)?.accessToken}`,
           },
         }
       );
@@ -83,7 +83,7 @@ export default function SettingsPage() {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${session?.accessToken}`,
+            Authorization: `Bearer ${(session as any)?.accessToken}`,
           },
         }
       );
@@ -96,7 +96,7 @@ export default function SettingsPage() {
         'http://localhost:5000/api/site-config',
         { heroImages: updatedImages },
         {
-          headers: { Authorization: `Bearer ${session?.accessToken}` },
+          headers: { Authorization: `Bearer ${(session as any)?.accessToken}` },
         }
       );
 
@@ -120,7 +120,7 @@ export default function SettingsPage() {
         'http://localhost:5000/api/site-config',
         { heroImages: updatedImages },
         {
-          headers: { Authorization: `Bearer ${session?.accessToken}` },
+          headers: { Authorization: `Bearer ${(session as any)?.accessToken}` },
         }
       );
 
