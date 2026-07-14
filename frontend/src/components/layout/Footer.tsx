@@ -39,28 +39,28 @@ export default function Footer() {
           background: 'radial-gradient(720px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(227, 24, 55, 0.16), transparent 78%)'
         } as CSSProperties}
       />
-      
+
       {/* Decorative Red Glow on the left, matching the image */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#8a1015]/20 rounded-full blur-[150px] pointer-events-none -translate-x-1/4 -translate-y-1/4" />
 
       <div className="max-w-[1366px] 3xl:max-w-[1760px] mx-auto px-4 sm:px-6 relative z-10 pt-20 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          
+
           {/* Column 1: Brand & Social */}
           <div className="flex flex-col">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-8">
               <Link href="/">
-                <Image 
-                  src={publicPath('/images/data_recovery_logo.webp')} 
-                  alt="Data Storage Solutions" 
-                  width={180} 
-                  height={60} 
-                  className="h-11 w-auto object-contain" 
+                <Image
+                  src={publicPath('/images/data_recovery_logo.webp')}
+                  alt="Data Storage Solutions"
+                  width={180}
+                  height={60}
+                  className="h-11 w-auto object-contain"
                 />
               </Link>
             </div>
-            
+
             <p className="text-gray-300 text-[15px] font-medium mb-4">
               Find us on social media
             </p>
@@ -123,9 +123,9 @@ export default function Footer() {
               {[
                 { label: 'Pickup & Delivery', href: '/dss/pickup-and-delivery' },
                 { label: 'Price & Cost', href: '/price-and-cost' },
-                { label: 'Google Reviews', href: '#' },
+                { label: 'FAQs', href: '/dss/faqs' },
                 { label: 'Blog & News', href: '/blogs' },
-                { label: 'Sitemap', href: '#' }
+                { label: 'Sitemap', href: '/sitemap' }
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
@@ -142,16 +142,16 @@ export default function Footer() {
             <h4 className="text-[22px] font-bold mb-8 uppercase tracking-wide">More Info.</h4>
             <ul className="space-y-4">
               {[
-                'Data Recovery Services', 
-                'What is Data Recovery?', 
-                'Encrypted Data Recovery', 
-                'Class 100 Clean Room Method', 
-                'Data Recovery Methods'
+                { label: 'Data Recovery Services', href: '/who-we-are/about-us' },
+                { label: 'What is Data Recovery?', href: '/data-recovery/recovery-procedure' },
+                { label: 'Encrypted Data Recovery', href: '/services/encrypted-data-recovery' },
+                { label: 'Class 100 Clean Room Method', href: '/data-recovery/class-100-clean-room' },
+                { label: 'Data Recovery Methods', href: '/data-recovery/recovery-methods' }
               ].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
+                <li key={item.label}>
+                  <Link href={item.href} className="flex items-center text-gray-300 hover:text-white transition-colors text-[15px]">
                     <ChevronRight size={14} className="text-[#FF1A1A] mr-2 flex-shrink-0" strokeWidth={3} />
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
