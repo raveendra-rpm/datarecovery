@@ -605,13 +605,7 @@ function BlogActionForm() {
                                       )
                                       .catch((err) => reject(err instanceof Error ? err.message : String(err)));
                                   }),
-                                setup: (editor: {
-                                  ui: { registry: { addButton: (name: string, opts: Record<string, unknown>) => void } };
-                                  selection: {
-                                    getContent: (opts: { format: string }) => string;
-                                    setContent: (html: string) => void;
-                                  };
-                                }) => {
+                                setup: (editor: any) => {
                                   editor.ui.registry.addButton('responsiveimagegrid', {
                                     text: '3/2/1 Grid',
                                     tooltip: 'Turn selected images into a 3/2/1 column grid across desktop/tablet/mobile',

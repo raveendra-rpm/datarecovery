@@ -129,6 +129,21 @@ export const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
 });
 
+// Removes a previously uploaded blog image from disk (e.g. when a post is
+// deleted or its featured image is replaced) so /uploads/blogs doesn't
+// accumulate orphaned files. Silently no-ops for external/non-local URLs.
+const UPLOADS_ROOT = path.resolve('uploads');
+const deleteUploadedFile = (imagePath) => {
+  if (typeof imagePath !== 'string' || !imagePath.startsWith('/uploads/')) return;
+  const absolutePath = path.resolve('.' + imagePath);
+  if (!absolutePath.startsWith(UPLOADS_ROOT + path.sep)) return; // guard against traversal
+  fs.unlink(absolutePath, (err) => {
+    if (err && err.code !== 'ENOENT') {
+      console.error('[BLOG] Failed to delete file', absolutePath, err.message);
+    }
+  });
+};
+
 // ───────────────────────── Public endpoints ─────────────────────────
 
 export const getAllBlogs = async (req, res) => {
@@ -409,6 +424,10 @@ export const updateBlog = async (req, res) => {
       noindex: noindex === 'true' || noindex === true,
     };
 
+    const existingBlog = await Blog.findById(req.params.id);
+    if (!existingBlog) return res.status(404).json({ error: 'Blog not found' });
+    const previousImage = existingBlog.image;
+
     if (req.file) {
       updates.image = `/uploads/blogs/${req.file.filename}`;
     } else if (image && image.trim() !== '') {
@@ -420,6 +439,10 @@ export const updateBlog = async (req, res) => {
       runValidators: true,
     });
     if (!blog) return res.status(404).json({ error: 'Blog not found' });
+
+    if (updates.image && updates.image !== previousImage) {
+      deleteUploadedFile(previousImage);
+    }
 
     res.json(normalizeBlogOutput(blog));
   } catch (error) {
@@ -434,6 +457,7 @@ export const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findByIdAndDelete(req.params.id);
     if (!blog) return res.status(404).json({ error: 'Blog not found' });
+    deleteUploadedFile(blog.image);
     res.json({ ok: true });
   } catch (error) {
     res.status(500).json({ error: error.message });

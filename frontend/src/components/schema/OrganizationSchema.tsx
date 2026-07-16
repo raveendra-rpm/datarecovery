@@ -45,7 +45,12 @@ export default function OrganizationSchema() {
           opens: '09:00',
           closes: '19:00',
         },
-        sameAs: [],
+        sameAs: [
+          'https://www.facebook.com/DataStorageSolution/',
+          'https://www.instagram.com/datastoragesolution/',
+          'https://x.com/DssDatastorage',
+          'https://www.linkedin.com/company/data-storage-solution',
+        ],
       },
       {
         '@type': 'WebSite',

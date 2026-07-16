@@ -19,7 +19,8 @@ export default function TinyMCEEditor({ init, ...rest }: IAllProps) {
   return (
     <Editor
       tinymceScriptSrc="/tinymce/tinymce.min.js"
-      init={{ license_key: 'gpl', ...init }}
+      licenseKey="gpl"
+      init={{ ...init }}
       {...rest}
     />
   );

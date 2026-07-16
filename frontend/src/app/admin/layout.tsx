@@ -12,6 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   // next.config.ts sets trailingSlash: true, so usePathname() returns "/admin/login/"
   const normalizedPathname = pathname.replace(/\/+$/, '') || '/';
   const isLoginPage = normalizedPathname === '/admin/login';
+  const isBlogActionPage = normalizedPathname === '/admin/blog/action';
 
   useEffect(() => {
     if (status === 'unauthenticated' && !isLoginPage) {
@@ -30,6 +31,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (!session) {
     return null; // Will redirect in useEffect
+  }
+
+  // Blog action (add/edit) page has its own full-width layout
+  if (isBlogActionPage) {
+    return <>{children}</>;
   }
 
   return (

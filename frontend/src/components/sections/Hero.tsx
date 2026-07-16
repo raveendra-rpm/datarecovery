@@ -152,7 +152,7 @@ export default function Hero() {
               <Image
                 key={src}
                 src={src}
-                alt={`Hero Image ${index + 1}`}
+                alt={`Data Storage Solutions - professional data recovery services in Bangalore, showcase ${index + 1}`}
                 fill
                 sizes="(min-width: 1536px) 880px, (min-width: 1024px) 50vw, 100vw"
                 className={`object-cover transition-opacity duration-700 ease-in-out ${index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}

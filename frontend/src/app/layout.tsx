@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Providers from "@/components/Providers";
 import OrganizationSchema from "@/components/schema/OrganizationSchema";
+import { SITE_URL } from "@/lib/seo";
 
 // Drop weight 400 — Montserrat is only used for headings; body text uses Open Sans
 const montserrat = Montserrat({
@@ -27,7 +28,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Best Data Recovery Services in Bangalore | Data Storage Solutions",
   description: "Expert data recovery services in Bangalore. Recover data from hard disk, SSD, RAID, laptop and more. 22+ years experience. Call +91 9880872536.",
-  metadataBase: new URL('https://datastoragesolutions.in'), // Assuming the domain, or replace with actual
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Data Storage Solutions - Expert Data Recovery",
     description: "Expert data recovery services in Bangalore. Recover data from hard disk, SSD, RAID, laptop and more. 22+ years experience.",
