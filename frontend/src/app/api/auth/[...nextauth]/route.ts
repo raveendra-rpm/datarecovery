@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:5000';
 
-const handler = NextAuth({
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -58,8 +58,22 @@ const handler = NextAuth({
     signIn: '/admin/login',
   },
   session: {
-    strategy: 'jwt',
+    strategy: 'jwt' as const,
   },
-});
+};
 
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions);
+
+// Custom handler to dynamically set NEXTAUTH_URL based on the incoming request
+const customHandler = (req: any, ctx: any) => {
+  const host = req.headers.get('host') || req.headers.get('x-forwarded-host');
+  const protocol = req.headers.get('x-forwarded-proto') || (req.url?.startsWith('https') ? 'https' : 'http');
+  
+  if (host) {
+    process.env.NEXTAUTH_URL = `${protocol}://${host}`;
+  }
+  
+  return handler(req, ctx);
+};
+
+export { customHandler as GET, customHandler as POST };
